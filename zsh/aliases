@@ -10,6 +10,8 @@ alias updatedb="/ && sudo /usr/libexec/locate.updatedb -v"
 alias lg="la | grep "
 alias optim='image_optim -v -r .'
 alias th="toggle_hidden_files"
+alias ls="colorls"
+alias la="colorls -la"
 
 ### Path aliases
 alias vm="ssh vagrant@127.0.0.1 -p 2222"
