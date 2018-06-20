@@ -6,6 +6,7 @@
 - clean: ["~", "~/.config"]
 
 - link:
+    ~/.tern-project: tern
     ~/.config/nvim: nvim
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zshrc: zshrc
