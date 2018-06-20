@@ -6,15 +6,15 @@
 - clean: ["~", "~/.config"]
 
 - link: 
-    .config/nvim: nvim
-    .oh-my-zsh: oh-my-zsh
-    .zshrc: zshrc
-    .chunkwmrc: chunkwmrc
-    .skhdrc: skhdrc
-    .config/skhd: skhd
-    .config/mpd/mpd.conf: mpd
-    .config/ranger/rc.conf: ranger
-    .tmux.conf: tmux
+    ~/.config/nvim: nvim
+    ~/.oh-my-zsh: oh-my-zsh
+    ~/.zshrc: zshrc
+    ~/.chunkwmrc: chunkwmrc
+    ~/.skhdrc: skhdrc
+    ~/.config/skhd: skhd
+    ~/.config/mpd/mpd.conf: mpd
+    ~/.config/ranger/rc.conf: ranger
+    ~/.tmux.conf: tmux
 
 - shell: 
         - git submodule sync --recursive
