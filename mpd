@@ -1,0 +1,33 @@
+# Recommended location for database
+db_file            "~/.config/mpd/database"
+
+# Logs to systemd journal
+log_file           "syslog"
+
+# The music directory is by default the XDG directory, uncomment to amend and choose a different directory
+music_directory    "~/Content/Music"
+playlist_directory "~/.config/mpd/playlists"
+pid_file "~/.config/mpd/mpd.pid"
+state_file "~/.config/mpd/mpdstate"
+user "pcalves"
+
+
+# Uncomment to refresh the database whenever files in the music_directory are changed
+auto_update "yes"
+auto_update_depth "2"
+follow_outside_symlinks "yes"
+follow_inside_symlinks "yes"
+
+audio_output {
+ type "osx"
+ name "CoreAudio"
+ mixer_type "software"
+}
+
+# Visualizer
+# audio_output {
+#  type "fifo"
+#  name "my_fifo"
+#  path "/tmp/mpd.fifo"
+#  format "44100:16:2"
+# }

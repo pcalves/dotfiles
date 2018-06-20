@@ -1,0 +1,4 @@
+oh-my-zsh/.gitignore
+oh-my-zsh/.git/
+nvim/plugged
+nvim/undodir
