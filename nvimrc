@@ -54,6 +54,7 @@ Plug 'othree/yajs.vim'           " Better syntax highlighting than ^^
 
 " vim niceties for various languages
 Plug 'kewah/vim-stylefmt'
+Plug 'w0rp/ale'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -243,9 +244,6 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-
-
-
 " Use JSX syntax in JS files
 let g:jsx_ext_required = 0
 
@@ -257,3 +255,20 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" Ale
+let g:ale_linters = {
+\ 'javascript': ['eslint'],
+\ 'jsx': ['eslint', 'stylelint'],
+\ 'css': ['stylelint']
+\}
+
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'jsx': ['eslint', 'stylelint'],
+\ 'css': ['stylelint']
+\}
+
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
