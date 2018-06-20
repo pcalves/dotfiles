@@ -87,7 +87,8 @@ set undodir=~/.vim/undodir
 
 
 "" Color scheme
-color dracula
+set termguicolors
+colorscheme dracula
 
 
 
