@@ -17,7 +17,8 @@
     ~/.config/ranger/rc.conf: ranger
     ~/.tmux.conf: tmux
     ~/Brewfile: brewfile
+    ~/Library/Application Support/Übersicht/widgets/supernerd.widget: supernerd
 
 - shell:
         - git submodule sync --recursive
-        - brew bundle install --file=~/Brewfile
+        - brew bundle --file=~/Brewfile
