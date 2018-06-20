@@ -1,12 +1,13 @@
-install zsh 
-install zsh-completions
-install ack
-install curl
-install fzf
-install git
-install neovim
-install the_silver_searcher
-install getantibody/tap/antibody
-install wget
-install z
-doctor
+cask_args appdir: "/Applications"
+tap "homebrew/cask"
+brew "zsh"
+brew "zsh-completions"
+brew "ack"
+brew "curl"
+brew "fzf"
+brew "git"
+brew "neovim"
+brew "the_silver_searcher"
+brew "getantibody/tap/antibody"
+brew "wget"
+brew "z"

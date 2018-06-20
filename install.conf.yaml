@@ -20,4 +20,4 @@
 
 - shell:
         - git submodule sync --recursive
-        - brew bundle ~/Brewfile
+        - brew bundle install --file=~/Brewfile
