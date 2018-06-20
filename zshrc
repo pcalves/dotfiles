@@ -10,7 +10,7 @@ antibody bundle denysdovhan/spaceship-prompt
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -37,11 +37,11 @@ export LANG=pt_PT.UTF-8
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(z catimg osx git svn pow debian nginx sublime brew brew-cask ssh-agent composer gem vagrant knife knife_ssh node npm ruby rvm titanium alloy pure zsh-syntax-highlighting)
+plugins=(z catimg osx git brew-cask ssh-agent composer gem vagrant node npm ruby rvm zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH/functions
-source $ZSH/aliases
+source ~/.config/zsh/functions
+source ~/.config/zsh/aliases
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/pc/android-sdk-macosx/tools:/usr/local/mysql/bin:$PATH

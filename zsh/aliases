@@ -1,0 +1,25 @@
+### Helpers
+alias nom="npm"                  # because it's funny and I keep making that typo
+alias grep='grep --color=auto'   # Always highlight grep search term
+alias ping='ping -c 5'           # Pings with 5 packets, not unlimited
+alias df='df -h'                 # Disk free, in gigabytes, not bytes
+alias du='du -h -c'              # Calculate total disk usage for a folder
+alias dus='du -h -s * | sort -r' # Show file usage for files in folder, ordered by file size
+alias cp='cp -v'                 # verbose copy by default
+alias updatedb="/ && sudo /usr/libexec/locate.updatedb -v"
+alias lg="la | grep "
+alias optim='image_optim -v -r .'
+alias th="toggle_hidden_files"
+
+### Path aliases
+alias vm="ssh vagrant@127.0.0.1 -p 2222"
+alias ohmyzsh="nvim ~/.oh-my-zsh && nvim ~/.zshrc"
+alias zcfg="nvim ~/.zshrc"
+alias acfg="nvim /private/etc/apache2/httpd.conf"
+alias ar="sudo apachectl restart"
+alias h="sudo nvim /private/etc/hosts && sudo nvim /private/etc/apache2/extra/httpd-vhosts.conf"
+
+### Git
+# Delete already merged branches.
+# Source: http://stevenharman.net/git-clean-delete-already-merged-branches
+alias gbclean="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"

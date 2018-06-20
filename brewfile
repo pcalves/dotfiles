@@ -1,0 +1,12 @@
+install zsh 
+install zsh-completions
+install ack
+install curl
+install fzf
+install git
+install neovim
+install the_silver_searcher
+install getantibody/tap/antibody
+install wget
+install z
+doctor

@@ -5,16 +5,19 @@
 
 - clean: ["~", "~/.config"]
 
-- link: 
+- link:
     ~/.config/nvim: nvim
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zshrc: zshrc
+    ~/.config/zsh: zsh
     ~/.chunkwmrc: chunkwmrc
     ~/.skhdrc: skhdrc
     ~/.config/skhd: skhd
     ~/.config/mpd/mpd.conf: mpd
     ~/.config/ranger/rc.conf: ranger
     ~/.tmux.conf: tmux
+    ~/Brewfile: brewfile
 
-- shell: 
+- shell:
         - git submodule sync --recursive
+        - brew bundle ~/Brewfile
