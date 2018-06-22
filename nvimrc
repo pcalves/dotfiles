@@ -43,7 +43,8 @@ Plug 'Yggdroot/indentLine'                                        " display inde
 Plug 'AndrewRadev/splitjoin.vim'                                  " gS to splig, gJ to join
 
 " Color Schemes
-Plug 'dracula/vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'dylanaraps/wal.vim'
 
 " Syntax highlighters, Pretty self-explanatory for the most part
 Plug 'ap/vim-css-color'          " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
@@ -88,8 +89,10 @@ set undodir=~/.vim/undodir
 
 
 "" Color scheme
+let g:dracula_colorterm = 0
 set termguicolors
-colorscheme dracula
+color dracula
+" colorscheme wal
 
 
 
@@ -272,3 +275,6 @@ let g:ale_fixers = {
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
