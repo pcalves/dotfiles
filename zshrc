@@ -31,8 +31,7 @@ antibody bundle denysdovhan/spaceship-prompt
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
 export EDITOR='nvim'
-export LC_ALL=pt_PT.UTF-8
-export LANG=pt_PT.UTF-8
+export LANG=en_US.UTF-8
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -44,11 +43,17 @@ source ~/.config/zsh/functions
 source ~/.config/zsh/aliases
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/pc/android-sdk-macosx/tools:/usr/local/mysql/bin:$PATH
-export PATH=/usr/local/share/npm/bin:$PATH
-PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS
+PATH=/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$PATH
+PATH=/usr/local/share/npm/bin:$PATH
+PATH=/usr/local/opt/flex/bin:$PATH
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+PATH=/Applications/VirtualBox.app/Contents/MacOS:$PATH
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 . `brew --prefix`/etc/profile.d/z.sh
+
+MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 
 ### Generic Colouriser
 source "`brew --prefix`/etc/grc.bashrc"
@@ -70,9 +75,6 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
 eval "$(thefuck --alias)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# AZK HOST
-export AZK_BALANCER_HOST=dev.cterm.io
 
 # nvm config
 export NVM_DIR="$HOME/.nvm"
@@ -96,3 +98,6 @@ load-nvmrc
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+
+# restores the last wal colorscheme that was in use.
+# wal -R
