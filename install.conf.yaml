@@ -15,6 +15,8 @@
     ~/.skhdrc: skhdrc
     ~/.config/skhd: skhd
     ~/.config/mpd/mpd.conf: mpd
+    ~/.ncmpcpp/config: ncmpcpp_config
+    ~/.ncmpcpp/bindings: ncmpcpp_bindings
     ~/.config/ranger/rc.conf: ranger
     ~/.tmux.conf: tmux
     ~/Brewfile: brewfile
