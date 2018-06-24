@@ -3,10 +3,32 @@ cmd + alt + ctrl - r : brew services restart chunkwm
 
 # open terminal
 # cmd - return : sh ~/.config/skhd/open-hyper.sh
-cmd - return : sh ~/.config/skhd/open-iterm.sh
+# cmd - return : sh ~/.config/skhd/open-iterm.sh
+cmd - return : sh ~/.config/skhd/open-kitty.sh
 
 # open browser
 cmd + shift - return : sh ~/.config/skhd/open-firefox.sh
+
+# open launcher
+cmd - space : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/launcher
+
+
+# open specific apps
+cmd + shift - m : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/music
+cmd + shift - f : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/filemanager
+cmd + shift - c : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/chat
+
+# fast focus desktop
+ctrl - x : chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
+ctrl - h : chunkc tiling::desktop --focus prev
+ctrl - l : chunkc tiling::desktop --focus next
+ctrl - 1 : chunkc tiling::desktop --focus 1
+ctrl - 2 : chunkc tiling::desktop --focus 2
+ctrl - 3 : chunkc tiling::desktop --focus 3
+ctrl - 4 : chunkc tiling::desktop --focus 4
+ctrl - 5 : chunkc tiling::desktop --focus 5
+ctrl - 6 : chunkc tiling::desktop --focus 6
+ctrl - 7 : chunkc tiling::desktop --focus 7
 
 # enter fullscreen mode for the focused container
 alt - f : chunkc tiling::window --toggle fullscreen
@@ -42,15 +64,16 @@ shift + alt - l : chunkc tiling::window --warp east
 alt - r : chunkc tiling::desktop --rotate 90
 
 # move focused container to workspace
-shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
-shift + alt - p : chunkc tiling::window --send-to-desktop prev
-shift + alt - n : chunkc tiling::window --send-to-desktop next
-shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
-shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
-shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
-shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
-shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
-shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+shift + ctrl - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
+shift + ctrl - p : chunkc tiling::window --send-to-desktop prev
+shift + ctrl - n : chunkc tiling::window --send-to-desktop next
+shift + ctrl - 1 : chunkc tiling::window --send-to-desktop 1
+shift + ctrl - 2 : chunkc tiling::window --send-to-desktop 2
+shift + ctrl - 3 : chunkc tiling::window --send-to-desktop 3
+shift + ctrl - 4 : chunkc tiling::window --send-to-desktop 4
+shift + ctrl - 5 : chunkc tiling::window --send-to-desktop 5
+shift + ctrl - 6 : chunkc tiling::window --send-to-desktop 6
+shift + ctrl - 7 : chunkc tiling::window --send-to-desktop 7
 
 # resize regions
 shift + alt + ctrl - h : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east

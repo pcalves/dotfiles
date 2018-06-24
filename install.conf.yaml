@@ -13,12 +13,14 @@
     ~/.config/zsh: zsh
     ~/.chunkwmrc: chunkwmrc
     ~/.skhdrc: skhdrc
+    ~/.config/kitty: kitty
     ~/.config/skhd: skhd
     ~/.config/mpd/mpd.conf: mpd
     ~/.ncmpcpp/config: ncmpcpp_config
     ~/.ncmpcpp/bindings: ncmpcpp_bindings
     ~/.config/ranger/rc.conf: ranger
     ~/.tmux.conf: tmux
+    ~/.launcher: launcher
     ~/Brewfile: brewfile
     ~/Library/Application Support/Übersicht/widgets/supernerd.widget: supernerd
 

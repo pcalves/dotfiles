@@ -1,0 +1,3 @@
+title Launcher
+focus
+launch /bin/bash -ci "s"
