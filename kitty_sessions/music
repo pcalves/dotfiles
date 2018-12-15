@@ -1,0 +1,4 @@
+title Music
+launch env LC_ALL=en_US.UTF-8 ncmpcpp
+title Visualizer
+launch vis

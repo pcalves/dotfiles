@@ -12,6 +12,9 @@ alias optim='image_optim -v -r .'
 alias th="toggle_hidden_files"
 alias ls="colorls"
 alias la="colorls -la"
+alias beetit="beet im ~/Soulseek\ Downloads/complete && mpc update && /Applications/Plex\ Media\ Server.app/Contents/MacOS/Plex\ Media\ Scanner --scan --refresh --section 17"
+alias music='tmux new-session "tmux source-file ~/.dotfiles/scripts/ncmpcpp_tmux_session"' # Tmux session with ncmpcpp and cover art
+
 
 ### Path aliases
 alias vm="ssh vagrant@127.0.0.1 -p 2222"

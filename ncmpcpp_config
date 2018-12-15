@@ -5,10 +5,17 @@ ncmpcpp_directory = ~/.ncmpcpp
 mpd_connection_timeout = "5"
 mpd_crossfade_time = "5"
 
+# user_interface = "classic"
+
 # Playlist
 playlist_disable_highlight_delay = "0"
 playlist_display_mode = "columns"
 playlist_show_remaining_time = "yes"
+
+# Other views
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
+playlist_editor_display_mode = "columns"
 
 default_place_to_search_in = "database"
 
@@ -33,21 +40,32 @@ regular_expressions = "extended"
 
 ## Selected tracks ##
 selected_item_prefix = "* "
-discard_colors_if_item_is_selected = "no"
+discard_colors_if_item_is_selected = "yes"
+autocenter_mode = "yes"
+centered_cursor = "yes"
 
 ## Seeking ##
 incremental_seeking = "yes"
 #seek_time = "1"
 
-## Visivility ##
-header_visibility = "yes"
+## Visibility ##
+header_visibility = "no"
 statusbar_visibility = "yes"
 titles_visibility = "yes"
 
 # progressbar_look = "=>-"
-#progressbar_look = "─╼─"
+progressbar_look = "─╼─"
+# progressbar_look = "▓▒░"
+progressbar_color = 9
+progressbar_elapsed_color = 5
 
-#now_playing_prefix = "> "
-# now_playing_prefix = "$b$2▶ "
+now_playing_prefix = "$b"
+now_playing_suffix = "$8$/b"
 
 media_library_primary_tag = album_artist
+
+# song_list_format = "                               $2%t $R$5%a "
+song_status_format = "$4%a $2// $8%t $2// $5%b "
+song_window_title_format = " {%a} - {%t}"
+
+# execute_on_song_change = "$HOME/.dotfiles/scripts/music extract"

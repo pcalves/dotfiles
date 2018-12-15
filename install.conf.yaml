@@ -6,23 +6,32 @@
 - clean: ["~", "~/.config"]
 
 - link:
-    ~/.tern-project: tern
-    ~/.config/nvim: nvim
-    ~/.oh-my-zsh: oh-my-zsh
-    ~/.zshrc: zshrc
-    ~/.config/zsh: zsh
     ~/.chunkwmrc: chunkwmrc
-    ~/.skhdrc: skhdrc
-    ~/.config/kitty: kitty
-    ~/.config/skhd: skhd
+    ~/.config/alacritty/alacritty.yml: alacritty
+    ~/.config/beets/config.yaml: beets
+    ~/.config/kitty/kitty.conf: kitty
+    ~/.config/kitty/sessions: kitty_sessions
     ~/.config/mpd/mpd.conf: mpd
-    ~/.ncmpcpp/config: ncmpcpp_config
-    ~/.ncmpcpp/bindings: ncmpcpp_bindings
+    ~/.config/nvim: nvim
     ~/.config/ranger/rc.conf: ranger
-    ~/.tmux.conf: tmux
+    ~/.config/rtv/rtv.cfg: rtv
+    ~/.config/skhd: skhd
+    ~/.config/vis: vis
+    ~/.config/wal/templates: wal_templates
+    ~/.config/zsh: zsh
     ~/.launcher: launcher
+    ~/.ncmpcpp/bindings: ncmpcpp_bindings
+    ~/.ncmpcpp/config: ncmpcpp_config
+    ~/.oh-my-zsh: oh-my-zsh
+    ~/.qutebrowser/config.py: qutebrowser
+    ~/.scripts: scripts
+    ~/.skhdrc: skhdrc
+    ~/.tern-project: tern
+    ~/.tmux.conf: tmux
+    ~/.zshrc: zshrc
     ~/Brewfile: brewfile
     ~/Library/Application Support/Übersicht/widgets/supernerd.widget: supernerd
+    ~/.weechat: weechat
 
 - shell:
         - git submodule sync --recursive

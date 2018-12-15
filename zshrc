@@ -5,9 +5,6 @@ ZSH=$HOME/.oh-my-zsh
 source <(antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 
-# launcher
-source $HOME/.dotfiles/launcher/fzfOS.sh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -34,7 +31,7 @@ source $HOME/.dotfiles/launcher/fzfOS.sh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
 export EDITOR='nvim'
-export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -47,10 +44,15 @@ source ~/.config/zsh/aliases
 
 # Customize to your needs...
 PATH=/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$PATH
+PATH=/$HOME/Library/Python/3.7/bin:$PATH
 PATH=/usr/local/share/npm/bin:$PATH
 PATH=/usr/local/opt/flex/bin:$PATH
 PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 PATH=/Applications/VirtualBox.app/Contents/MacOS:$PATH
+PATH=$HOME/.cargo/env:$PATH
+PATH=/usr/local/opt/icu4c/bin:$PATH
+PATH=/usr/local/opt/icu4c/sbin:$PATH
+
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 . `brew --prefix`/etc/profile.d/z.sh
 

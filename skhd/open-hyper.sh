@@ -3,8 +3,10 @@
 /usr/bin/env osascript <<-EOF
 tell application "System Events"
     if (name of processes) contains "Hyper" then
-        tell application "Hyper" to activate
-        keystroke "n" using command down
+        tell process "Hyper"
+            click menu item "New Window" of menu "Shell" of menu bar 1
+            set frontmost to true
+        end tell
     else
         tell application "Hyper" to activate
     end if

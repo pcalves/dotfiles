@@ -1,3 +1,5 @@
+set-option -g default-shell $SHELL
+
 # change the prefix from 'C-b' to 'C-a'
 # (remap capslock to CTRL for easy access)
 unbind C-b
@@ -23,20 +25,33 @@ bind c new-window -c "#{pane_current_path}"
 # reload config file
 bind r source-file ~/.tmux.conf
 
-unbind p
-bind p previous-window
-
 # shorten command delay
 set -sg escape-time 1
 
 # don't rename windows automatically
-set-option -g allow-rename off
+set-window-option -g allow-rename off
+set-window-option -g automatic-rename off
 
 # mouse control (clickable windows, panes, resizable panes)
 set -g mouse on
 
-# enable vi mode keys
-set-window-option -g mode-keys vi
+# set vim-like copy-mode keys
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+unbind-key -T copy-mode-vi v
+bind-key -T copy-mode-vi 'v' send -X begin-selection # Begin selection in copy mode.
+bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle # Begin selection in copy mode.
+bind-key -T copy-mode-vi 'y' send -X copy-selection # Yank selection in copy mode.
+
+# set tmux to use vi keys
+setw -g mode-keys vi
+
+# setw -g xterm-keys on
+
+# enable clipboard
+set-option -s set-clipboard on
 
 # set default terminal mode to 256 colors
 set -g default-terminal "screen-256color"
@@ -57,11 +72,11 @@ bind-key x kill-pane
 
 # Navigating vim and tmux splits
 # http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-bind-key -n C-k if-shell "$is_vim" "send-keys C-w 'k'" "display-panes ; select-pane -U"
-bind-key -n C-j if-shell "$is_vim" "send-keys C-w 'j'" "display-panes ; select-pane -D"
-bind-key -n C-h if-shell "$is_vim" "send-keys C-w 'h'" "display-panes ; select-pane -L"
-bind-key -n C-l if-shell "$is_vim" "send-keys C-w 'l'" "display-panes ; select-pane -R"
+bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
+bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
 
 ######################
 ### DESIGN CHANGES ###
@@ -75,15 +90,26 @@ set-window-option -g monitor-activity off
 set-option -g bell-action none
 
 # statusbar
-set -g status-position top
+set-option -g status-position bottom
+set-option -g status-fg white
+set-option -g status-bg default
+set-option -g status-attr default
+set-window-option -g window-status-fg "#666666"
+set-window-option -g window-status-bg black
+set-window-option -g window-status-attr default
+set-window-option -g window-status-current-fg red
+set-window-option -g window-status-current-bg black
+set-window-option -g window-status-current-attr default
+set-option -g message-fg white
+set-option -g message-bg black
+set-option -g message-attr bright
+set -g status-position bottom
+set -g status-left " "
 set -g status-justify left
-# set -g status-bg colour18
-# set -g status-fg colour137
-# set -g status-attr dim
-# set -g status-left ''
-# set -g status-right '#[fg=colour233,bg=colour19,bold] %d/%m #[fg=colour233,bg=colour8,bold] %H:%M:%S '
-# set -g status-right-length 50
-# set -g status-left-length 20
+setw -g window-status-current-format '#W'
+setw -g window-status-format         ' #(echo "#{window_name}") '
+setw -g window-status-current-format ' #(echo "#{window_name}") '
+set -g status-right ' #{?client_prefix,💭#[noreverse] ,}'
 
 # messages
 set -g message-attr bold
@@ -91,12 +117,7 @@ set -g message-attr bold
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'sei40kr/tmux-airline-dracula'
-
-# Other examples:
-# set -g @plugin 'github_username/plugin_name'
-# set -g @plugin 'git@github.com/user/plugin'
-# set -g @plugin 'git@bitbucket.com/user/plugin'
+set -g @plugin 'tmux-plugins/tmux-yank'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

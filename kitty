@@ -8,15 +8,19 @@
 # bold_font Operator Mono Thick
 # bold_italic_font Operator Mono Medium
 # font_family      Input Mono
-font_family      Hack Nerd Font
+font_family      Iosevka Nerd Font
+# font_family      Hack Nerd Font
 italic_font      auto
 bold_font        auto
 bold_italic_font auto
 
 # Font size (in pts)
-font_size        12.0
+font_size        14
 
 adjust_column_width 0
+
+dynamic_background_opacity yes
+background_opacity 0.95
 
 # The amount the font size is changed by (in pts) when increasing/decreasing
 # the font size in a running terminal.
@@ -59,7 +63,7 @@ mouse_hide_wait 3.0
 # The enabled window layouts. A comma separated list of layout names. The special value * means
 # all layouts. The first listed layout will be used as the startup layout.
 # For a list of available layouts, see the file layouts.py
-enabled_layouts *
+enabled_layouts vertical:bias=70
 
 # If enabled, the window size will be remembered so that new instances of kitty will have the same
 # size as the previous instance. If disabled, the window will initially have size configured
@@ -89,11 +93,20 @@ visual_bell_duration 0.0
 enable_audio_bell yes
 
 # The modifier keys to press when clicking with the mouse on URLs to open the URL
-open_url_modifiers ctrl+shift
+open_url_modifiers ctrl
 
 # The program with which to open URLs that are clicked on. The special value "default" means to
 # use the operating system's default URL handler.
 open_url_with default
+
+# Choose whether to use the system implementation of wcwidth() (used to
+# control how many cells a character is rendered in).  If you use the system
+# implementation, then kitty and any programs running in it will agree. The
+# problem is that system implementations often are based on outdated unicode
+# standards and get the width of many characters, such as emoji, wrong. So if
+# you are using kitty with programs that have their own up-to-date wcwidth()
+# implementation, set this option to no.
+use_system_wcwidth yes
 
 # The value of the TERM environment variable to set
 term xterm-kitty
@@ -106,32 +119,34 @@ window_margin_width 20
 # Color
 # Base16 Dracula - kitty color config
 # Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula), modified by me
-background #282936
-foreground #e9e9f4
-selection_background #e9e9f4
-selection_foreground #282936
-url_color #62d6e8
-cursor #e9e9f4
+# background #282a36
+# foreground #f8f8f2
+# selection_background #f8f8f2
+# selection_foreground #282a36
+# url_color #44475a
+# cursor #f8f8f2
 
-# normal
-color0 #282936
-color1 #ea51b2
-color2 #ebff87
-color3 #00f769
-color4 #62d6e8
-color5 #b45bcf
-color6 #a1efe4
-color7 #e9e9f4
+# # normal
+# color0 #282a36
+# color1 #ff5555
+# color2 #50fa7b
+# color3 #f1fa8c
+# color4 #6272a4
+# color5 #ff79c6
+# color6 #8be9fd
+# color7 #f8f8f2
 
-# bright
-color8 #626483
-color9 #f098ce
-color10 #3a3c4e
-color11 #4d4f68
-color12 #62d6e8
-color13 #50fa7b
-color14 #00f769
-color15 #e9e9f4
+# # bright
+# color8 #44475a
+# color9 #ff8888
+# color10 #82fba0
+# color11 #f7fcbd
+# color12 #828fb7
+# color13 #ffacdc
+# color14 #bdf3fe
+# color15 #ffffff
+
+include ~/.cache/wal/colors-kitty.conf
 
 # Shell
 shell /bin/zsh --login
@@ -221,6 +236,8 @@ map ctrl+shift+backspace restore_font_size
 # For example:
 #
 #symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 PowerlineSymbols
+
+copy_on_select yes
 macos_hide_titlebar yes
 macos_option_as_alt no
 

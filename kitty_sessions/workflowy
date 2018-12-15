@@ -1,0 +1,3 @@
+cd ~/Documents
+title Workflowy
+launch env LC_ALL=en_US.UTF-8 nvim workflowy.wofl

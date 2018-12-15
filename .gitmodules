@@ -16,3 +16,9 @@
 [submodule "launcher"]
 	path = launcher
 	url = https://github.com/pcalves/launcher.git
+[submodule "firefox/tweaks"]
+	path = firefox/tweaks
+	url = https://github.com/Timvde/UserChrome-Tweaks
+[submodule "scripts/pomo"]
+	path = scripts/pomo
+	url = https://github.com/pcalves/pomo

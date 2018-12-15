@@ -1,0 +1,11 @@
+plugins: fetchart
+directory: ~/content/music
+library: ~/data/musiclibrary.db
+import:
+  move: yes
+  languages: en
+fetchart:
+  auto: yes
+  cautious: no
+  minwidth: 500
+  enforce_ratio: yes

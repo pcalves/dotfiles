@@ -2,21 +2,24 @@
 cmd + alt + ctrl - r : brew services restart chunkwm
 
 # open terminal
+cmd - return : sh ~/.config/skhd/open-kitty.sh
+# cmd - return : sh ~/.config/skhd/open-alacritty.sh
 # cmd - return : sh ~/.config/skhd/open-hyper.sh
 # cmd - return : sh ~/.config/skhd/open-iterm.sh
-cmd - return : sh ~/.config/skhd/open-kitty.sh
 
 # open browser
-cmd + shift - return : sh ~/.config/skhd/open-firefox.sh
+# cmd + shift - return : sh ~/.config/skhd/open-firefox.sh
+# cmd + shift - return : sh ~/.config/skhd/open-qutebrowser.sh
+cmd + shift - return : sh ~/.config/skhd/open-safari.sh
 
 # open launcher
 cmd - space : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/launcher
-
 
 # open specific apps
 cmd + shift - m : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/music
 cmd + shift - f : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/filemanager
 cmd + shift - c : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/chat
+cmd + shift - w : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/workflowy
 
 # fast focus desktop
 ctrl - x : chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
@@ -76,10 +79,10 @@ shift + ctrl - 6 : chunkc tiling::window --send-to-desktop 6
 shift + ctrl - 7 : chunkc tiling::window --send-to-desktop 7
 
 # resize regions
-shift + alt + ctrl - h : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
-shift + alt + ctrl - j : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge south; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge north
-shift + alt + ctrl - k : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge north; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge south
-shift + alt + ctrl - l : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge east; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge west
+shift + alt + ctrl - h : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge west; chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge east
+shift + alt + ctrl - j : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge south; chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge north
+shift + alt + ctrl - k : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge north; chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge south
+shift + alt + ctrl - l : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge east; chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge west
 
 # fix taking screenshots of apps
 cmd + shift - 4 -> : chunkc border::clear

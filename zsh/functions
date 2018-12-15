@@ -84,6 +84,10 @@ function highlight {
     perl -p -e "select(STDOUT); $| = 1; ${perl_regex:1}";
 }
 
+
+
+
+
 #intercept calls to svn
 svn () {
 
@@ -130,6 +134,10 @@ svn () {
     command svn $sub_cmd "$@"
   fi
 }
+
+
+
+
 
 # Pretty svn status
 svnst () {
@@ -178,16 +186,28 @@ svnst () {
     fi;
 }
 
+
+
+
+
 # Set SVN ignore based on .svnignore file
 svnignore () {
     command svn propset svn:ignore -F .svnignore  .
 }
+
+
+
+
 
 # cd into whatever is the forefront Finder window.
 # stolen from https://github.com/paulirish/dotfiles/commit/e67d1bc03
 cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
+
+
+
+
 
 function toggle_hidden_files() {
     show=`defaults read com.apple.finder AppleShowAllFiles`
@@ -201,6 +221,10 @@ function toggle_hidden_files() {
     restart_finder
 }
 
+
+
+
+
 function restart_finder() {
   #killall Finder;
   echo 'quitting finder…';
@@ -210,6 +234,10 @@ function restart_finder() {
   open -a Finder.app;
 }
 
+
+
+
+
 function base64() {
   if [ -f $1 ] ; then
     openssl base64 < $1 | tr -d '\n' | pbcopy
@@ -218,12 +246,20 @@ function base64() {
   fi
 }
 
+
+
+
+
 # convert videos to GIFs using ffmpeg and gifsicle
 # https://gist.github.com/dergachev/4627207
 function giffify () {
   ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - |\
   gifsicle --optimize=3 --delay=3 > "${$1%.*}.gif"
 }
+
+
+
+
 
 # git branch fuzzy search checkout
 # https://coderwall.com/p/ba8afa/git-branch-fuzzy-search-checkout
@@ -232,4 +268,39 @@ fbr () {
     branches=$(git branch -a) &&
     branch=$(echo "$branches" | fzf +s +m -e) &&
     git checkout $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
+}
+
+
+
+
+
+function macfeh() {
+    open -b "drabweb.macfeh" "$@"
+}
+
+
+
+
+
+# Plex dev utilities
+
+function pmp-build {
+  killall "Plex Media Player"
+  cd ~/Sites/plex-media-player/build/
+  ninja
+  open src/Plex\ Media\ Player.app
+}
+
+function pmp-clean {
+  # See: https://github.com/plexinc/plex-media-player/
+  # brew install ninja
+  # brew install mpv --with-shared --HEAD
+  pushd .
+  cd ~/Sites/plex-media-player
+  pyenv local 3.6.4
+  rm -rf build/
+  mkdir build
+  cd build
+  cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=output ..
+  popd
 }
