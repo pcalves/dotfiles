@@ -5,4 +5,5 @@ nvim/undodir
 nvim/.netrwhist
 weechat/sec.conf
 weechat/weechat.log
+weechat/script
 weechat/logs
