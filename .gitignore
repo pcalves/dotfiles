@@ -3,6 +3,7 @@ oh-my-zsh/.git/
 nvim/plugged
 nvim/undodir
 nvim/.netrwhist
+vis/vis.log
 weechat/sec.conf
 weechat/weechat.log
 weechat/script
