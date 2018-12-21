@@ -44,7 +44,7 @@ c.confirm_quit = ['downloads']
 #   - window: Open in a new window.
 c.new_instance_open_target = 'tab'
 
-c.window.hide_decoration = False
+c.window.hide_decoration = True
 
 # Backend to use to display websites. qutebrowser supports two different
 # web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit

@@ -106,3 +106,9 @@ prompt spaceship
 
 # restores the last wal colorscheme that was in use.
 # wal -R
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/pcalves/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall

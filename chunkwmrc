@@ -4,7 +4,7 @@ source ~/.cache/wal/chunkwmcolors
 
 NFOCUS=$(echo $FOCUS | sed 's/#//')
 NPRESE=$(echo $PRESE | sed 's/#//')
-WAL=$(cat ~/.cache/wal/wal)
+# WAL=$(cat ~/.cache/wal/wal)
 
 #
 # NOTE: specify the absolutepath to the directory to use when
@@ -19,9 +19,10 @@ chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 #
 
 chunkc core::hotload 1
-chunkc core::unload tiling.so
+# chunkc core::unload blur.so
+chunkc core::unload border.so
 chunkc core::unload purify.so
-chunkc core::unload blur.so
+chunkc core::unload tiling.so
 
 chunkc core::log_file /usr/local/var/log/chunkwm/chunkwm.err.log
 
@@ -31,9 +32,9 @@ chunkc core::log_file /usr/local/var/log/chunkwm/chunkwm.err.log
 #
 
 chunkc set window_float_topmost          1
-chunkc set window_fade_inactive          1
-chunkc set window_fade_alpha             0.75
-chunkc set window_fade_duration          0.15
+# chunkc set window_fade_inactive          1
+# chunkc set window_fade_alpha             0.75
+# chunkc set window_fade_duration          0.15
 chunkc set window_use_cgs_move 0
 
 #
@@ -53,7 +54,7 @@ chunkc set global_desktop_offset_top     5
 chunkc set global_desktop_offset_bottom  5
 chunkc set global_desktop_offset_left    5
 chunkc set global_desktop_offset_right   5
-chunkc set global_desktop_offset_gap     5
+chunkc set global_desktop_offset_gap     10
 
 chunkc set desktop_padding_step_size     5.0
 chunkc set desktop_gap_step_size         5.0
@@ -69,6 +70,16 @@ chunkc set window_float_next             0
 chunkc set window_float_center           1
 chunkc set window_region_locked          1
 
+chunkc set preselect_border_color        $NPRESE
+chunkc set preselect_border_width        10
+chunkc set preselect_border_radius       0
+
+chunkc set focused_border_outline        1
+chunkc set focused_border_skip_floating  0
+chunkc set focused_border_color          $NFOCUS
+chunkc set focused_border_width          10
+chunkc set focused_border_radius         0
+
 chunkc set mouse_modifier                fn
 
 
@@ -76,8 +87,8 @@ chunkc set mouse_modifier                fn
 # NOTE: the following are config variables for the chunkwm-blur plugin.
 #
 
-chunkc set wallpaper $WAL
-chunkc set wallpaper_blur 30.0
+# chunkc set wallpaper $WAL
+# chunkc set wallpaper_blur 30.0
 
 
 #
@@ -85,9 +96,10 @@ chunkc set wallpaper_blur 30.0
 #       if chunkc plugin_dir is not set, the absolutepath is necessary.
 #
 
-chunkc core::load tiling.so
+# chunkc core::load blur.so
+chunkc core::load border.so
 chunkc core::load purify.so
-chunkc core::load blur.so
+chunkc core::load tiling.so
 
 chunkc tiling::rule --owner kitty --name zathura --state tile &
 chunkc tiling::rule --owner kitty --name Launcher --state float &

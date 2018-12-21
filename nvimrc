@@ -282,6 +282,8 @@ let g:ale_keep_list_window_open = 0
 " Workflowish
 autocmd BufWinLeave *.wofl mkview
 autocmd BufWinEnter *.wofl silent loadview
+autocmd FileType workflowish setlocal ts=2 sw=2 expandtab
+
 
 " Custom status line
 " https://www.blaenkdenum.com/posts/a-simpler-vim-statusline/
