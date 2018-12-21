@@ -22,3 +22,6 @@
 [submodule "scripts/pomo"]
 	path = scripts/pomo
 	url = https://github.com/pcalves/pomo
+[submodule "scripts/dynamic-wall"]
+	path = scripts/dynamic-wall
+	url = https://github.com/pcalves/dynamic-wall.git
