@@ -45,22 +45,24 @@ chunkc set global_desktop_mode           bsp
 
 chunkc set custom_bar_enabled            1
 chunkc set custom_bar_all_monitors       1
-chunkc set custom_bar_offset_top         20
-chunkc set custom_bar_offset_bottom      20
+chunkc set custom_bar_offset_top         24
+chunkc set custom_bar_offset_bottom      0
 chunkc set custom_bar_offset_left        0
 chunkc set custom_bar_offset_right       0
 
-chunkc set global_desktop_offset_top     5
-chunkc set global_desktop_offset_bottom  5
-chunkc set global_desktop_offset_left    5
-chunkc set global_desktop_offset_right   5
+chunkc set global_desktop_offset_top     10
+chunkc set global_desktop_offset_bottom  10
+chunkc set global_desktop_offset_left    10
+chunkc set global_desktop_offset_right   10
 chunkc set global_desktop_offset_gap     10
 
 chunkc set desktop_padding_step_size     5.0
 chunkc set desktop_gap_step_size         5.0
 
+chunkc set bsp_spawn_left                0
 chunkc set bsp_split_mode                optimal
 chunkc set bsp_split_ratio               0.5
+chunkc set bsp_optimal_ratio             1.618
 
 chunkc set monitor_focus_cycle           1
 chunkc set window_focus_cycle            monitor
@@ -71,13 +73,13 @@ chunkc set window_float_center           1
 chunkc set window_region_locked          1
 
 chunkc set preselect_border_color        $NPRESE
-chunkc set preselect_border_width        10
+chunkc set preselect_border_width        2
 chunkc set preselect_border_radius       0
 
 chunkc set focused_border_outline        1
 chunkc set focused_border_skip_floating  0
 chunkc set focused_border_color          $NFOCUS
-chunkc set focused_border_width          10
+chunkc set focused_border_width          2
 chunkc set focused_border_radius         0
 
 chunkc set mouse_modifier                fn
@@ -103,17 +105,18 @@ chunkc core::load tiling.so
 
 chunkc tiling::rule --owner kitty --name zathura --state tile &
 chunkc tiling::rule --owner kitty --name Launcher --state float &
+chunkc tiling::rule --owner kitty --name bitwarden --state float &
 chunkc tiling::rule --owner iTerm2 --name Preferences --state float &
 chunkc tiling::rule --owner Hyper --role AXWindow --subrole AXDialog --state tile &
 chunkc tiling::rule --owner Keybase --role AXWindow --subrole AXDialog --state tile &
 chunkc tiling::rule --owner \"System Preferences\" --state float &
-chunkc tiling::rule --owner Finder --name Copy --state tile &
+chunkc tiling::rule --owner Finder --name Copy --state float &
 chunkc tiling::rule --owner \"Archive Utility\" --state float &
 chunkc tiling::rule --owner Console --state tile &
 chunkc tiling::rule --owner \"App Store\" --state float &
 chunkc tiling::rule --owner Übersicht --state float &
-chunkc tiling::rule --owner snwe --state float &
-chunkc tiling::rule --owner Dashlane --state float &
+chunkc tiling::rule --owner macfeh --state tile &
 chunkc tiling::rule --owner mpv --state tile &
+chunkc tiling::rule --owner licecap --state float &
 
 chunkwm --load-sa

@@ -74,7 +74,7 @@ c.auto_save.interval = 15000
 
 # Always restore open sites when qutebrowser is reopened.
 # Type: Bool
-c.auto_save.session = True
+c.auto_save.session = False
 
 # Enable support for the HTML 5 web application cache feature. An
 # application cache acts like an HTTP cache in some sense. For documents
@@ -128,10 +128,6 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Show javascript prompts.
 # Type: Bool
 c.content.javascript.prompt = True
-
-# Allow JS to open new tabs
-# Type: Bool
-c.content.javascript.can_open_tabs_automatically = True
 
 # Allow locally loaded documents to access other local URLs.
 # Type: Bool
@@ -266,7 +262,7 @@ c.prompt.radius = 0
 
 # Show a scrollbar.
 # Type: Bool
-c.scrolling.bar = 'never'
+c.scrolling.bar = False
 
 # Enable smooth scrolling for web pages. Note smooth scrolling does not
 # work with the `:scroll-px` command.
@@ -375,7 +371,7 @@ c.tabs.select_on_remove = 'prev'
 #   - never: Always hide the tab bar.
 #   - multiple: Hide the tab bar if only one tab is open.
 #   - switching: Show the tab bar when switching tabs.
-c.tabs.show = 'always'
+c.tabs.show = 'multiple'
 
 # Duration (in milliseconds) to show the tab bar before hiding it when
 # tabs.show is set to 'switching'.
@@ -425,6 +421,7 @@ c.tabs.wrap = False
 c.url.auto_search = 'naive'
 
 c.tabs.padding = {'top': 10, 'bottom': 10, 'left': 10, 'right': 10}
+c.tabs.indicator.width = 0
 
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 # for a blank page.
@@ -456,51 +453,51 @@ c.zoom.levels = ['25%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%',
 
 # Font used in the completion widget.
 # Type: Font
-c.fonts.completion.entry = '12pt Source Sans Pro'
+c.fonts.completion.entry = '14pt Iosevka Nerd Font'
 
 # Font used in the completion categories.
 # Type: Font
-c.fonts.completion.category = 'bold 12pt Source Sans Pro'
+c.fonts.completion.category = 'bold 14pt Iosevka Nerd Font'
 
 # Font used for the debugging console.
 # Type: QtFont
-c.fonts.debug_console = '12pt Source Sans Pro'
+c.fonts.debug_console = '14pt Iosevka Nerd Font'
 
 # Font used for the downloadbar.
 # Type: Font
-c.fonts.downloads = '12pt Source Sans Pro'
+c.fonts.downloads = '14pt Iosevka Nerd Font'
 
 # Font used for the hints.
 # Type: Font
-c.fonts.hints = 'bold 12pt Source Sans Pro'
+c.fonts.hints = 'bold 14pt Iosevka Nerd Font'
 
 # Font used in the keyhint widget.
 # Type: Font
-c.fonts.keyhint = '12pt Source Sans Pro'
+c.fonts.keyhint = '14pt Iosevka Nerd Font'
 
 # Font used for error messages.
 # Type: Font
-c.fonts.messages.error = '12pt Source Sans Pro'
+c.fonts.messages.error = '14pt Iosevka Nerd Font'
 
 # Font used for info messages.
 # Type: Font
-c.fonts.messages.info = '12pt Source Sans Pro'
+c.fonts.messages.info = '14pt Iosevka Nerd Font'
 
 # Font used for warning messages.
 # Type: Font
-c.fonts.messages.warning = '12pt Source Sans Pro'
+c.fonts.messages.warning = '14pt Iosevka Nerd Font'
 
 # Font used for prompts.
 # Type: Font
-c.fonts.prompts = '12pt Source Sans Pro'
+c.fonts.prompts = '14pt Iosevka Nerd Font'
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = '12pt Source Sans Pro'
+c.fonts.statusbar = '14pt Iosevka Nerd Font'
 
 # Font used in the tab bar.
 # Type: QtFont
-c.fonts.tabs = '12pt Source Sans Pro'
+c.fonts.tabs = '14pt Iosevka Nerd Font'
 
 # Bindings for normal mode
 config.bind('-', 'zoom-out')

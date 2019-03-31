@@ -32,7 +32,9 @@
     ~/Brewfile: brewfile
     ~/Library/Application Support/Übersicht/widgets/supernerd.widget: supernerd
     ~/.weechat: weechat
+    ~/Library/LaunchAgents/rice.dotfiles.dynamic-wall.plist: rice.dotfiles.dynamic-wall.plist
 
 - shell:
         - git submodule sync --recursive
+        - launchctl load -w ~/Library/LaunchAgents/rice.dotfiles.dynamic-wall.plist
         - brew bundle --file=~/Brewfile

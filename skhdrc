@@ -8,9 +8,9 @@ cmd - return : sh ~/.config/skhd/open-kitty.sh
 # cmd - return : sh ~/.config/skhd/open-iterm.sh
 
 # open browser
-cmd + shift - return : sh ~/.config/skhd/open-safari.sh
+# cmd + shift - return : sh ~/.config/skhd/open-safari.sh
 # cmd + shift - return : sh ~/.config/skhd/open-firefox.sh
-# cmd + shift - return : sh ~/.config/skhd/open-qutebrowser.sh
+cmd + shift - return : sh ~/.config/skhd/open-qutebrowser.sh
 
 # open launcher
 cmd - space : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/launcher
@@ -20,6 +20,8 @@ cmd + shift - m : /Applications/kitty.app/Contents/MacOS/kitty --single-instance
 cmd + shift - f : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/filemanager
 cmd + shift - c : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/chat
 cmd + shift - w : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/workflowy
+cmd + shift - r : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/reddit
+cmd + shift - p : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/bitwarden
 
 # pomodoro
 ctrl + alt - s : sh ~/.config/skhd/start-pomo.sh
@@ -27,7 +29,6 @@ ctrl + alt - e : sh ~/.config/skhd/stop-pomo.sh
 ctrl + alt - w : sh ~/.config/skhd/pause-pomo.sh
 
 # fast focus desktop
-ctrl - x : chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
 ctrl - h : chunkc tiling::desktop --focus prev
 ctrl - l : chunkc tiling::desktop --focus next
 ctrl - 1 : chunkc tiling::desktop --focus 1
@@ -93,8 +94,8 @@ shift + alt + ctrl - l : chunkc tiling::window --use-temporary-ratio 0.02 --adju
 cmd + shift - 4 -> : chunkc border::clear
 
 # music
-play : mpc toggle
-next: mpc next
-fast: mpc next
-previous: mpc prev
-rewind: mpc prev
+# play : mpc toggle
+# next: mpc next
+# fast: mpc next
+# previous: mpc prev
+# rewind: mpc prev

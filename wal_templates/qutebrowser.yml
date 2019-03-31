@@ -112,7 +112,5 @@ colors:
         border: "{background}"
         selected:
             bg: "{color3}"
-    webpage:
-        bg: "{foreground}"
 hints:
     border: "1px solid {foreground}"

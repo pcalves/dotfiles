@@ -1,9 +1,16 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# geometry has an internal plugin architecture
+GEOMETRY_PROMPT_PLUGINS=(exec_time jobs git node)
+
+# geomtry git config
+PROMPT_GEOMETRY_GIT_CONFLICTS=true
+
 # antibody plugins
 source <(antibody init)
-antibody bundle denysdovhan/spaceship-prompt
+antibody bundle geometry-zsh/geometry
+antibody bundle zsh-users/zsh-autosuggestions
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -36,7 +43,7 @@ export LC_ALL=en_US.UTF-8
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(z osx git brew-cask node npm)
+plugins=(z osx git brew-cask node npm vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.config/zsh/functions
@@ -44,12 +51,12 @@ source ~/.config/zsh/aliases
 
 # Customize to your needs...
 PATH=/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$PATH
-PATH=/$HOME/Library/Python/3.7/bin:$PATH
+PATH=$HOME/Library/Python/3.7/bin:$PATH
 PATH=/usr/local/share/npm/bin:$PATH
 PATH=/usr/local/opt/flex/bin:$PATH
 PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 PATH=/Applications/VirtualBox.app/Contents/MacOS:$PATH
-PATH=$HOME/.cargo/env:$PATH
+PATH=$HOME/.cargo/bin:$PATH
 PATH=/usr/local/opt/icu4c/bin:$PATH
 PATH=/usr/local/opt/icu4c/sbin:$PATH
 
@@ -81,6 +88,9 @@ eval "$(thefuck --alias)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# rbenv config
+eval "$(rbenv init -)"
+
 # nvm config
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -100,10 +110,6 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
 # restores the last wal colorscheme that was in use.
 # wal -R
 # The following lines were added by compinstall
@@ -112,3 +118,9 @@ zstyle :compinstall filename '/Users/pcalves/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# added by travis gem
+[ -f /Users/pcalves/.travis/travis.sh ] && source /Users/pcalves/.travis/travis.sh

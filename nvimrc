@@ -14,50 +14,78 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-Plug 'mattn/emmet-vim'                                            " Emmet for vim, 'nuff said
+Plug 'mhinz/vim-startify'                                         " Start screen
+Plug 'w0rp/ale'                                                   " Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
+Plug 'chazy/dirsettings'                                          " Directory-specific settings
 Plug 'vim-scripts/Align'                                          " It's in the name: align text, declarations, pretty much anything
-Plug 'Raimondi/delimitMate'                                       " Auto-inserts closing characters when applicable
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }       " asynchronous keyword completion
-Plug 'Shougo/neosnippet'                                          " snippets in vim
-Plug 'Shougo/neosnippet-snippets'                                 " default snippets
+Plug 'jiangmiao/auto-pairs'                                       " Auto-inserts closing characters when applicable
 Plug 'ntpeters/vim-better-whitespace'                             " Highlight trailing whitespace characters
 Plug 'mhinz/vim-signify'                                          " git diff in gutter
-Plug 'tpope/vim-fugitive'                                         " git in vim ❤️
 Plug 'tpope/vim-commentary'                                       " Comment/Uncomment code
 Plug 'tpope/vim-repeat'                                           " . for plugins
 Plug 'tpope/vim-eunuch'                                           " vim sugar for the UNIX shell commands that need it the most.
 Plug 'tpope/vim-surround'                                         " add surroundings to text (quotes, tags, brackets, etc.)
 Plug 'tpope/vim-vinegar'                                          " enhance netrw, never look at nerdtree again
 Plug 'tpope/vim-speeddating'                                      " increment dates, times, numerals & ordinal (C-A/C-X)
+Plug 'tpope/vim-dispatch'                                         " async compile
+Plug 'tpope/vim-fugitive'                                         " git in vim ❤️
+Plug 'tpope/vim-rhubarb'                                          " github extension for fugitive
+Plug 'tpope/vim-unimpaired'                                       " pairs of handy bracket mappings
+Plug 'junegunn/gv.vim'                                            " git commit browser
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
 Plug 'junegunn/fzf.vim'                                           " fzf commands for vim
+Plug 'junegunn/vim-slash'                                         " Improve in-buffer search
 Plug 'tmhedberg/matchit'                                          " % matches more than single characters (e.g. tag matching)
-Plug 'benekastah/neomake'                                         " ansyc :make, run linters, builders, etc.
 Plug 'editorconfig/editorconfig-vim'                              " EditorConfig for vim, define coding styles b/w different editors & IDEs
 Plug 'justinmk/vim-sneak'                                         " Vim motion plugin that jumps to any location specified by two characters (s{char}{char})
 Plug 'vim-scripts/IndexedSearch'                                  " shows 'Nth match out of M' at every search
 Plug 'nelstrom/vim-visual-star-search'                            " start a * or # search from a visual block
-Plug 'Yggdroot/indentLine'                                        " display indention levels with thin vertical lines
+Plug 'thaerkh/vim-indentguides'                                   " display indention levels with thin vertical lines
 Plug 'AndrewRadev/splitjoin.vim'                                  " gS to splig, gJ to join
-Plug 'junegunn/goyo.vim'                                          " distraction-free writing
-Plug 'lukaszkorecki/workflowish'                                  " workflowy for vim!
+Plug 'vim-airline/vim-airline'                                    " Lean & mean status/tabline
+Plug 'vim-airline/vim-airline-themes'                             " Themes for airline
+Plug 'autozimu/LanguageClient-neovim', {
+\ 'branch': 'next',
+\ 'do': 'bash install.sh',
+\ }                                                               " LSP for vim/neovim
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " Async completion framework
+Plug 'Shougo/neosnippet.vim'                                      " Snippet support for deoplete
+Plug 'Shougo/neosnippet-snippets'                                 " Snippets for neosnippet
+Plug 'janko-m/vim-test'                                           " Run tests from vim
+Plug 'neomake/neomake'                                            " run programs asynchronously
+Plug 'lxhillwind/leader-clipboard'                                 " use <Leader> to access system clipboard in Vim
 
-" Color Schemes
+"Color Schemes
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'arcticicestudio/nord-vim'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'dylanaraps/wal.vim'
+Plug 'reedes/vim-colors-pencil'
 
 " Syntax highlighters, Pretty self-explanatory for the most part
-Plug 'ap/vim-css-color'          " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'sheerun/vim-polyglot'      " Collection of language packs for vim, regularly updated
-Plug 'gavocanov/vim-js-indent'   " Indenting from pangloss/vim-javascript
-Plug 'othree/yajs.vim'           " Better syntax highlighting than ^^
+Plug 'ap/vim-css-color'             " Shows colors defined in CSS & various pre-processor languages
+Plug 'sheerun/vim-polyglot'         " Collection of language packs for vim, regularly updated
+Plug 'gavocanov/vim-js-indent'      " Indenting from pangloss/vim-javascript
+Plug 'othree/yajs.vim'              " Better syntax highlighting than ^^
+Plug 'HerringtonDarkholme/yats.vim' " TypesSript highlighting
 
 " vim niceties for various languages
 Plug 'kewah/vim-stylefmt'
-Plug 'w0rp/ale'
+Plug 'docunext/closetag.vim'   " Autoclose HTML/XML tags
+Plug 'elzr/vim-json'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'ryanoasis/vim-devicons'  " Add icons to plugins
+
+" Vimwiki
+" Plug 'patrickdavey/vimwiki-1', { 'branch': 'dev' }
+Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
+
+" Writing
+Plug 'reedes/vim-pencil'             " Several improvements for writing prose
+Plug 'reedes/vim-textobj-quote'      " Use curly quotes in vim
+Plug 'kana/vim-textobj-user'         " Dependency for vim-textobj-quote
+Plug 'junegunn/goyo.vim'             " Distraction-free writing
+Plug 'junegunn/limelight.vim'        " Hyperfocus-writing
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -67,18 +95,33 @@ call plug#end()
 
 
 "" MAIN SETTINGS
-syntax on                            " Syntax highlighting
+syntax on                           " Syntax highlighting
 set encoding=utf-8
-set showcmd                          " display incomplete commands
-filetype plugin indent on            " load file type plugins + indentation
-set number                           " show line numbers
-set visualbell                       " No sounds
-set autoread                         " Reload files changed outside vim
-set cul                              " show cursor line
-set relativenumber                   " default to relative numbers
-set inccommand=nosplit               " live preview
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1  " Cursor is pipe in Insert, block in Normal
-let mapleader = ","                  " Use comma as leader
+set showcmd                         " display incomplete commands
+filetype plugin indent on           " load file type plugins + indentation
+set number                          " show line numbers
+set visualbell                      " No sounds
+set autoread                        " Reload files changed outside vim
+set cul                             " show cursor line
+set relativenumber                  " default to relative numbers
+set inccommand=nosplit              " live preview
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Cursor is pipe in Insert, block in Normal
+let mapleader = ","                 " Use comma as leader
+set cmdheight=1                     " Better display for messages
+set shortmess+=c                    " suppress 'match x of y', 'The only match' and 'Pattern not found' messages
+set signcolumn=yes                  " always show signcolumns
+set fcs=eob:\                       " hide tilde sign on blank lines
+set laststatus=2                    " always show status line
+
+" Disable underline cursor
+function s:SetCursorLine()
+    set cursorline
+    hi cursorline cterm=none
+endfunction
+autocmd VimEnter * call s:SetCursorLine()
+" hi CursorLine ctermbg=7 ctermfg=0
+" hi CursorLineNr ctermbg=7 ctermfg=0
+
 
 " Swap file stuff. If you don't have one make an undodir in ~/.vim
 " In terminal just type mkdir -p ~/.vim/undodir
@@ -92,15 +135,22 @@ set undodir=~/.vim/undodir
 
 
 "" Color scheme
-let g:dracula_colorterm = 0
 set termguicolors
+set background=dark
+let g:dracula_colorterm = 0
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 color dracula
-" colorscheme wal
-" colorscheme palenight
 
 
 
 
+
+" Make it obvious where 80 characters is
+" (disabled due to syntax highlighting issues)
+" cheatsheet https://jonasjacek.github.io/colors/
+" highlight ColorColumn ctermbg=233 ctermfg=0
+" let &colorcolumn=join(range(81,999),',')
 
 "" Whitespace
 set smartindent
@@ -109,13 +159,7 @@ set breakindent                " sensible soft wrapping of lines
 set tabstop=2 shiftwidth=2     " a tab is two spaces
 set expandtab                  " use spaces, not tabs (optional)
 set backspace=indent,eol,start " backspace through everything in insert mode
-
-
-
-
-"" Margin highlighting
-set colorcolumn=80,120
-
+set conceallevel=0             " show all characters, all the time
 
 
 
@@ -141,111 +185,39 @@ autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 
 
 "" COMMAND MAPPINGS
-" toggle current fold open/closed
-nnoremap <Space> za
-" Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
-nnoremap <silent> <leader>n :bn<CR>
-nnoremap <silent> <leader>p :bp<CR>
-nnoremap <silent> <leader>x :bd<CR>
+" fzf.vim
+nmap <Leader>; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+nmap <C-t> :FZF -m<CR>
+nmap <C-p> :FZF -m<CR>
 
-nnoremap <silent> <C-t> :FZF -m<cr>
-nnoremap <silent> <C-p> :FZF -m<cr>
+" vim-test
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
 
-" deoplete tab-complete
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
-" ,<Tab> for regular tab
-inoremap <Leader><Tab> <Space><Space>
-" tern
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+" close current buffer
+map <leader>d :bd<CR>
+
+" Hotkey mapping to open the calendar pane
+nnoremap <silent> <leader>C :Calendar<CR>
+nnoremap <silent> <leader>G :Goyo<CR>
 
 " Force saving files that require root permission
 cnoremap w!! w !sudo tee > /dev/null %
+
+" ripgrep
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --follow --glob "!.git/*" --glob "!.agignore" --glob "!.gitignore" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+nnoremap <silent> <leader>f :Find
+
 
 
 
 
 "" PLUGIN SETTINGS
-set laststatus=2  " always show status line
-" set showtabline=2 " always show tab line
-
-"" neomake configuration
-" Open the loclist/quickfix list when entries are produced,
-" and preserve cursor position
-let g:neomake_open_list = 2
-
-" Customise error and warning signs
-let g:neomake_error_sign = {
-      \ 'text': 'E',
-      \ 'texthl': 'ErrorMsg',
-      \ }
-
-let g:neomake_warning_sign = {
-      \ 'text': 'W',
-      \ 'texthl': 'ErrorMsg',
-      \ }
-
-" Run Neomake on :w
-autocmd! BufWritePost * Neomake
-
-" ---------- JAVASCRIPT MAKERS ----------
-" Default JS linting is with ESLint
-let g:neomake_css_enabled_makers = ['stylelint']
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-" load local eslint in the project root
-" modified from https://github.com/mtscout6/syntastic-local-eslint.vim
-" NB: This means, for your eslintrc to work properly, Neovim must be opened
-" from the project’s root directory
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-
-" If an .eslintc file is NOT found in the current file's directory, or
-" the directories above it, switch to linting JS files w/ Standard
-" if findfile('.eslintrc', '.;') ==# ''
-"   let g:neomake_javascript_enabled_makers = ['standard']
-" endif
-
-
-
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = 0  " This do disable full signature type on autocomplete
-" Use smartcase.
-let g:deoplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:deoplete#sources#syntax#min_keyword_length = 1
-
-" Enable heavy omni completion.
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
-
-" tern
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " Use JSX syntax in JS files
 let g:jsx_ext_required = 0
@@ -254,24 +226,117 @@ let g:jsx_ext_required = 0
 let g:netrw_localrmdir='rm -r'
 
 " FZF
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'rg --hidden --ignore-file .agignore -l ""'
+" let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
+" let g:fzf_files_options = '--preview "rougify {2..} | head -'.&lines.'"'
+let g:fzf_files_options = '--preview "bat --color always --style numbers {2..} | head -'.&lines.'"'
+
+
+
+
+" vim-signify
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_realtime = 1
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
+
+
+
+
+"Completion
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" Deoplete
+let g:deoplete#enable_at_startup = 1 " Auto start
+let g:deoplete#enable_smart_case = 1 " Smart case
+let g:deoplete#auto_complete_start_length = 2 " Stop bothering me
+let g:deoplete#enable_refresh_always = 0 " Stop the weird sorting redraw
+let g:deoplete#max_abbr_width = 0 " Allow for wide menu
+
+set completeopt=longest,menuone
+
+"use TAB as the mapping
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ?  "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort ""
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction ""
+inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+" Sources:
+let g:deoplete#sources = {}
+let g:deoplete#ignore_sources = {}
+let g:deoplete#sources.markdown = ['look']
+" Ignore look in code files
+let g:deoplete#ignore_sources.java = ['look', 'm']
+let g:deoplete#ignore_sources['cs'] = ['look', 'm']
+let g:deoplete#ignore_sources['javascript'] = ['look', 'm']
+let g:deoplete#ignore_sources['rust'] = ['look', 'm']
+let g:deoplete#ignore_sources['python'] = ['look', 'm']
+let g:deoplete#ignore_sources['snippets'] = ['look', 'm']
+let g:deoplete#ignore_sources['sh'] = ['look', 'm']
+let g:deoplete#ignore_sources['go'] = ['look', 'm']
+let g:deoplete#ignore_sources['pug'] = ['look', 'm']
+let g:deoplete#ignore_sources['css'] = ['look', 'm']
+let g:deoplete#ignore_sources['html'] = ['look', 'm']
+let g:deoplete#ignore_sources['log'] = ['look', 'm']
+
+set complete-=i   " disable scanning included files
+set complete-=t   " disable searching tags
+
+" Snippets
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" LSP
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
+
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ }
+
+nnoremap <leader>ld :call LanguageClient_textDocument_definition()<CR>
+nnoremap <leader>lr :call LanguageClient_textDocument_rename()<CR>
+nnoremap <leader>lf :call LanguageClient_textDocument_formatting()<CR>
+nnoremap <leader>lt :call LanguageClient_textDocument_typeDefinition()<CR>
+nnoremap <leader>lx :call LanguageClient_textDocument_references()<CR>
+nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nnoremap <leader>lc :call LanguageClient_textDocument_completion()<CR>
+nnoremap <leader>lh :call LanguageClient_textDocument_hover()<CR>
+nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+
 " Ale
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
-\ 'jsx': ['eslint', 'stylelint'],
+\ 'jsx': ['eslint'],
 \ 'css': ['stylelint']
 \}
 
 let g:ale_fixers = {
-\ 'javascript': ['eslint'],
-\ 'jsx': ['eslint', 'stylelint'],
+\ 'javascript': ['eslint', 'prettier'],
+\ 'jsx': ['eslint', 'prettier'],
 \ 'css': ['stylelint']
 \}
 
+let g:ale_virtualenv_dir_names = []
+let g:ale_cache_executable_check_failures = 1
+let g:ale_linters_explicit = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
@@ -279,189 +344,90 @@ let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 0
 
-" Workflowish
-autocmd BufWinLeave *.wofl mkview
-autocmd BufWinEnter *.wofl silent loadview
-autocmd FileType workflowish setlocal ts=2 sw=2 expandtab
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
 
+" vim-test
+let g:neomake_open_list = 1
+let g:test#strategy = 'neomake'
+let g:neomake_warning_sign = {
+  \   'text': '◉'
+  \ }
 
-" Custom status line
-" https://www.blaenkdenum.com/posts/a-simpler-vim-statusline/
+let g:neomake_error_sign = {
+  \   'text': '◉'
+  \ }
 
-function! Status(winnum)
-  let active = a:winnum == winnr()
-  let bufnum = winbufnr(a:winnum)
+" vimwiki
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_conceallevel = 0
+let g:vimwiki_folding='expr' "this allows the folding to work for markdown
 
-  let stat = ''
+let g:vimwiki_list = [{
+  \ 'nested_syntaxes': {
+  \   'javascript': 'javascript',
+  \   'bash': 'sh',
+  \   'vim': 'vim',
+  \  },
+  \ 'auto_tags': 1,
+  \ 'auto_toc': 1,
+  \ 'list_margin': 2,
+  \ 'auto_export': 1,
+  \ 'automatic_nested_syntaxes': 1,
+  \ 'maxhi': 1,
+  \ 'template_default': 'default',
+  \ 'syntax': 'markdown',
+  \ 'ext': '.md',
+  \ 'path': '~/vimwiki/',
+  \ 'template_path': '~/vimwiki/templates/',
+  \ 'path_html': '~/vimwiki/site_html/',
+  \ 'custom_wiki2html': 'vimwiki_markdown',
+  \ 'template_ext': '.tpl',
+  \ }]
 
-  " Display errors from Ale in statusline
-  " https://kadekillary.work/post/statusline/
-  function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-    return l:counts.total == 0 ? '' : printf(
-      \ 'W:%d E:%d',
-      \ l:all_non_errors,
-      \ l:all_errors
-      \)
-  endfunction
+" Switch to two spaces after a period for prose.
+let g:goyo_width = 100
+let g:pencil#joinspaces = 1
+ " Color defs, for default dracula
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
 
-  " this function just outputs the content colored by the
-  " supplied colorgroup number, e.g. num = 2 -> User2
-  " it only colors the input if the window is the currently
-  " focused one
+" IndentGuide
+let g:indentguides_ignorelist = ['text', 'json', 'md', 'wiki', 'vimwiki']
 
-  function! Color(active, group, content)
-    if a:active
-      return '%#' . a:group . '#' . a:content . '%*'
-    else
-      return a:content
-    endif
-  endfunction
-
-  " this handles alternative statuslines
-  let usealt = 0
-
-  let type = getbufvar(bufnum, '&buftype')
-  let name = bufname(bufnum)
-
-  let altstat = ''
-
-  if type ==# 'help'
-    let altstat .= '%#SLHelp# HELP %* ' . fnamemodify(name, ':t:r')
-    let usealt = 1
-  elseif name ==# '__Gundo__'
-    let altstat .= ' Gundo'
-    let usealt = 1
-  elseif name ==# '__Gundo_Preview__'
-    let altstat .= ' Gundo Preview'
-    let usealt = 1
-  endif
-
-  if usealt
-    return altstat
-  endif
-
-  " column
-  "   this might seem a bit complicated but all it amounts to is
-  "   a calculation to see how much padding should be used for the
-  "   column number, so that it lines up nicely with the line numbers
-
-  "   an expression is needed because expressions are evaluated within
-  "   the context of the window for which the statusline is being prepared
-  "   this is crucial because the line and virtcol functions otherwise
-  "   operate on the currently focused window
-
-  function! Column()
-    let vc = virtcol('.')
-    let ruler_width = max([strlen(line('$')), (&numberwidth - 1)]) + &l:foldcolumn
-    let column_width = strlen(vc)
-    let padding = ruler_width - column_width
-    let column = ''
-
-    if padding <= 0
-      let column .= vc
-    else
-      " + 1 because for some reason vim eats one of the spaces
-      let column .= repeat(' ', padding + 1) . vc
-    endif
-
-    return column . ' '
-  endfunction
-
-  let stat .= '%#function#'
-  let stat .= '%#SLColumn#'
-  let stat .= '%{Column()}'
-  let stat .= '%*'
-
-  if getwinvar(a:winnum, 'statusline_progress', 0)
-    let stat .= Color(active, 'SLProgress', ' %p ')
-  endif
-
-  " linter errors
-  let stat .= LinterStatus()
-
-  " file name
-  let stat .= Color(active, 'SLArrows', active ? ' »' : ' «')
-  let stat .= ' %<'
-  let stat .= '%f'
-  let stat .= ' ' . Color(active, 'SLArrows', active ? '«' : '»')
-
-  " file modified
-  let modified = getbufvar(bufnum, '&modified')
-  let stat .= Color(active, 'SLLineNr', modified ? ' +' : '')
-
-  " read only
-  let readonly = getbufvar(bufnum, '&readonly')
-  let stat .= Color(active, 'SLLineNR', readonly ? ' ‼' : '')
-
-  " paste
-  if active
-    if getwinvar(a:winnum, '&spell')
-      let stat .= Color(active, 'SLLineNr', ' S')
-    endif
-
-    if getwinvar(a:winnum, '&paste')
-      let stat .= Color(active, 'SLLineNr', ' P')
-    endif
-  endif
-
-  " right side
-  let stat .= '%='
-
-  " git branch
-  if exists('*fugitive#head')
-    let head = fugitive#head()
-
-    if empty(head) && exists('*fugitive#detect') && !exists('b:git_dir')
-      call fugitive#detect(getcwd())
-      let head = fugitive#head()
-    endif
-
-    if !empty(head)
-      let stat .= Color(active, 'SLBranch', ' ← ') . head . ' '
-    endif
-  endif
-
-  return stat
+" Show message that tests have started
+function! MyOnNeomakeJobStarted() abort
+  echom printf('🔮 Running tests...')
 endfunction
 
-function! s:ToggleStatusProgress()
-  if !exists('w:statusline_progress')
-    let w:statusline_progress = 0
+" Show message when all tests are passing
+function! MyOnNeomakeJobFinished() abort
+  let context = g:neomake_hook_context
+  if context.jobinfo.exit_code == 0
+    echom printf('🧙 All tests passed ')
   endif
-
-  let w:statusline_progress = !w:statusline_progress
+  if context.jobinfo.exit_code == 1
+    echom printf('🤬 Failing tests')
+  endif
 endfunction
 
-command! ToggleStatusProgress :call s:ToggleStatusProgress()
-
-nnoremap <silent> ,p :ToggleStatusProgress<CR>
-
-function! s:IsDiff()
-  let result = 0
-
-  for nr in range(1, winnr('$'))
-    let result = result || getwinvar(nr, '&diff')
-
-    if result
-      return result
-    endif
-  endfor
-
-  return result
-endfunction
-
-function! s:RefreshStatus()
-  for nr in range(1, winnr('$'))
-    call setwinvar(nr, '&statusline', '%!Status(' . nr . ')')
-  endfor
-endfunction
-
-command! RefreshStatus :call <SID>RefreshStatus()
-
-augroup status
-  autocmd!
-  autocmd VimEnter,VimLeave,WinEnter,WinLeave,BufWinEnter,BufWinLeave * :RefreshStatus
+augroup my_neomake_hooks
+  au!
+  autocmd User NeomakeJobFinished call MyOnNeomakeJobFinished()
+  autocmd User NeomakeJobStarted call MyOnNeomakeJobStarted()
 augroup END
+
+" Filetype specific config
+augroup write_mode
+  autocmd!
+  autocmd FileType markdown call textobj#quote#init()
+  autocmd FileType vimwiki call textobj#quote#init()
+  autocmd WinEnter,BufEnter * if &ft == "markdown" || &ft == "vimwiki" | call pencil#init({'wrap': 'soft'}) | set sbr= | endif
+augroup END
+
+" Turn on Limelight when Goyo is enabled
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!

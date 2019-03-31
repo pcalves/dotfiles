@@ -20,7 +20,7 @@ font_size        14
 adjust_column_width 0
 
 dynamic_background_opacity yes
-background_opacity 0.99
+background_opacity 1.00
 
 # The amount the font size is changed by (in pts) when increasing/decreasing
 # the font size in a running terminal.

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-open -n -a qutebrowser
+/Applications/qutebrowser.app/Contents/MacOS/qutebrowser --backend webengine --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers
