@@ -6,9 +6,9 @@ GIT=`which git`
 COMMIT_TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S %Z'`
 
 # convert wiki files to html files
-vim +VimwikiTabIndex +VimwikiAll2HTML +qall
+nvim +VimwikiTabIndex +VimwikiAll2HTML +qall > /dev/null
 
-cd ~/vimwiki
+cd $HOME
 ${GIT} add --all .
 ${GIT} commit -am "Automated update on ${COMMIT_TIMESTAMP}"
 ${GIT} push origin master
