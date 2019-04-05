@@ -522,3 +522,14 @@ c.aliases.update({
   'read': "jseval (function()%7Bwindow.reading=%7Btoken:'LU7PvTTy9F6wEghdKw2e4g',platform:'bookmarklet',version:'1.0.1'%7D;var%20head=document.getElementsByTagName('head')%5B0%5D,script=document.createElement('script');script.src='https://www.reading.am/assets/bookmarklet/loader.js';head.appendChild(script);%7D)()",
   'later': "jseval function%20iprl5()%7Bvar%20d=document,z=d.createElement('scr'+'ipt'),b=d.body,l=d.location;try%7Bif(!b)throw(0);d.title='(Saving...)%20'+d.title;z.setAttribute('src',l.protocol+'//www.instapaper.com/j/jFr8TUJLG6hj?a=read-later&u='+encodeURIComponent(l.href)+'&t='+(new%20Date().getTime()));b.appendChild(z);%7Dcatch(e)%7Balert('Please%20wait%20until%20the%20page%20has%20loaded.');%7D%7Diprl5();void(0)"
 })
+
+# available qt-flags:
+#   Qt: http://doc.qt.io/qt-5/qapplication.html#QApplication
+#   Chromium: https://cs.chromium.org/chromium/src/content/public/common/content_switches.cc
+#   --blink-settings: https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/frame/Settings.json5
+c.qt.args = [
+  "ignore-gpu-blacklist",
+  "enable-gpu-rasterization",
+  "enable-native-gpu-memory-buffers",
+  "num-raster-threads=4"
+]
