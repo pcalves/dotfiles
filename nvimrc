@@ -384,6 +384,9 @@ let g:vimwiki_list = [{
   \ 'path_html': '~/vimwiki/site_html/',
   \ 'custom_wiki2html': 'vimwiki_markdown',
   \ 'template_ext': '.tpl',
+  \ 'diary_rel_path': 'journal/',
+  \ 'diary_index': 'index',
+  \ 'diary_header': 'Journal'
   \ }]
 
 " Switch to two spaces after a period for prose.
@@ -431,3 +434,6 @@ augroup END
 " Turn on Limelight when Goyo is enabled
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" Allow vim to edit crontab files
+au BufNewFile,BufRead crontab.* set nobackup | set nowritebackup
