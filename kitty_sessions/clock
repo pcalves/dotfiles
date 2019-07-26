@@ -1,0 +1,2 @@
+title Clock
+launch env LC_ALL=en_US.UTF-8 tty-clock -s -c -b
