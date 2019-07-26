@@ -6,7 +6,7 @@
 - clean: ["~", "~/.config"]
 
 - link:
-    ~/.chunkwmrc: chunkwmrc
+    ~/.yabairc: yabairc
     ~/.config/alacritty/alacritty.yml: alacritty
     ~/.config/beets/config.yaml: beets
     ~/.config/kitty/kitty.conf: kitty

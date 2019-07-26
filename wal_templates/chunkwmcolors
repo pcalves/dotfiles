@@ -1,2 +1,7 @@
 FOCUS=0xff{color7}
 PRESE=0xff{color0}
+BACKGROUND=0xff{color0}
+FOREGROUND=0xff{color7}
+ACTIVE_BORDER=0xff{color4}
+NORMAL_BORDER=0xff{color0}
+INSERT_BORDER=0xff{color2}

@@ -10,9 +10,6 @@
 [submodule "snwe"]
 	path = snwe
 	url = https://github.com/blahsd/snwe.git
-[submodule "supernerd"]
-	path = supernerd
-	url = https://github.com/pcalves/supernerd.widget.git
 [submodule "launcher"]
 	path = launcher
 	url = https://github.com/pcalves/launcher.git
