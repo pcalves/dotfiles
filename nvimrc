@@ -44,21 +44,19 @@ Plug 'thaerkh/vim-indentguides'                                   " display inde
 Plug 'AndrewRadev/splitjoin.vim'                                  " gS to splig, gJ to join
 Plug 'vim-airline/vim-airline'                                    " Lean & mean status/tabline
 Plug 'vim-airline/vim-airline-themes'                             " Themes for airline
-Plug 'autozimu/LanguageClient-neovim', {
-\ 'branch': 'next',
-\ 'do': 'bash install.sh',
-\ }                                                               " LSP for vim/neovim
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " Async completion framework
 Plug 'Shougo/neosnippet.vim'                                      " Snippet support for deoplete
 Plug 'Shougo/neosnippet-snippets'                                 " Snippets for neosnippet
 Plug 'janko-m/vim-test'                                           " Run tests from vim
 Plug 'neomake/neomake'                                            " run programs asynchronously
-Plug 'lxhillwind/leader-clipboard'                                 " use <Leader> to access system clipboard in Vim
+Plug 'lxhillwind/leader-clipboard'                                " use <Leader> to access system clipboard in Vim
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}        " intellisense engine
 
-"Color Schemes
+" Color Schemes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'reedes/vim-colors-pencil'
+Plug 'dylanaraps/wal.vim'
+
 
 " Syntax highlighters, Pretty self-explanatory for the most part
 Plug 'ap/vim-css-color'             " Shows colors defined in CSS & various pre-processor languages
@@ -135,12 +133,7 @@ set undodir=~/.vim/undodir
 
 
 "" Color scheme
-set termguicolors
-set background=dark
-let g:dracula_colorterm = 0
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
-color dracula
+colorscheme wal
 
 
 
@@ -296,30 +289,10 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" LSP
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
-
-" Minimal LSP configuration for JavaScript
-let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'javascript.jsx': ['javascript-typescript-stdio'],
-  \ }
-
-nnoremap <leader>ld :call LanguageClient_textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient_textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient_textDocument_formatting()<CR>
-nnoremap <leader>lt :call LanguageClient_textDocument_typeDefinition()<CR>
-nnoremap <leader>lx :call LanguageClient_textDocument_references()<CR>
-nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <leader>lc :call LanguageClient_textDocument_completion()<CR>
-nnoremap <leader>lh :call LanguageClient_textDocument_hover()<CR>
-nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+" coc.nvim
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>lr <Plug>(coc-references)
+nmap <silent> <leader>li <Plug>(coc-implementation)
 
 " Ale
 let g:ale_linters = {
@@ -362,7 +335,7 @@ let g:neomake_error_sign = {
 " vimwiki
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_conceallevel = 0
-let g:vimwiki_folding='expr' "this allows the folding to work for markdown
+let g:vimwiki_folding='custom' "this allows the folding to work for markdown
 
 let g:vimwiki_list = [{
   \ 'nested_syntaxes': {
@@ -432,8 +405,14 @@ augroup write_mode
 augroup END
 
 " Turn on Limelight when Goyo is enabled
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+autocmd! User GoyoEnter  SignifyDisable | set nocursorline | Limelight
+autocmd! User GoyoLeave SignifyEnable | Limelight!
 
 " Allow vim to edit crontab files
 au BufNewFile,BufRead crontab.* set nobackup | set nowritebackup
+
+" airline
+
+let g:airline_powerline_fonts = 1
+let g:airline_symbols_ascii=1
+let g:airline#extensions#ale#enabled=1
