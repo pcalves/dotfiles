@@ -10,4 +10,4 @@ app() {
   )" | jq -r '.login.password' | pbcopy
 }
 
-chunkc tiling::window --toggle float && chunkc tiling::window --grid-layout 3:4:1:1:2:1 && app
+yabai -m window --toggle float && yabai -m window --grid 3:4:1:1:2:1 && app
