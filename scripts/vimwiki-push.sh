@@ -4,11 +4,12 @@
 
 GIT=`which git`
 COMMIT_TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S %Z'`
+NVIM=`which nvim`
 
 # convert wiki files to html files
-nvim +VimwikiTabIndex +VimwikiAll2HTML +qall > /dev/null
+${NVIM} +VimwikiTabIndex +VimwikiAll2HTML +qall > /dev/null
 
-cd $HOME
+cd $HOME/vimwiki
 ${GIT} add --all .
 ${GIT} commit -am "Automated update on ${COMMIT_TIMESTAMP}"
 ${GIT} push origin master
