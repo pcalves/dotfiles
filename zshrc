@@ -40,10 +40,12 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 export EDITOR='nvim'
 export LC_ALL=en_US.UTF-8
 
+# Unlock bitwarden vault
+export BW_SESSION=$(cat ~/pass)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(z osx git node npm vi-mode)
+plugins=(z osx git node npm vi-mode gpg-agent)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.config/zsh/functions
@@ -59,6 +61,7 @@ PATH=/Applications/VirtualBox.app/Contents/MacOS:$PATH
 PATH=$HOME/.cargo/bin:$PATH
 PATH=/usr/local/opt/icu4c/bin:$PATH
 PATH=/usr/local/opt/icu4c/sbin:$PATH
+PATH=$HOME/.local/bin:$PATH
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 . `brew --prefix`/etc/profile.d/z.sh
@@ -124,3 +127,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # added by travis gem
 [ -f /Users/pcalves/.travis/travis.sh ] && source /Users/pcalves/.travis/travis.sh
+
+export GPG_TTY=$(tty)
