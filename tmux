@@ -104,7 +104,7 @@ set-option -g message-fg white
 set-option -g message-bg black
 set-option -g message-attr bright
 set -g status-position bottom
-set -g status-left " "
+set -g status-left ""
 set -g status-justify left
 setw -g window-status-current-format '#W'
 setw -g window-status-format         ' #(echo "#{window_name}") '
