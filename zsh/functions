@@ -1,6 +1,6 @@
 # nice extraction tool by http://nparikh.org/notes/zshrc.txt
 # Usage: extract <file>
-extract () {
+function extract {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)        tar xjf $1        ;;
@@ -82,117 +82,6 @@ function highlight {
         shift;
     done;
     perl -p -e "select(STDOUT); $| = 1; ${perl_regex:1}";
-}
-
-
-
-
-
-#intercept calls to svn
-svn () {
-
-  #bail if the user didnt specify which subversion command to invoke
-  if [ $# -lt 1 ]; then
-    command svn
-    return
-  fi
-
-  local sub_cmd=$1
-  shift
-
-  #intercept svn diff commands
-  if [[ $sub_cmd == diff ]]; then
-
-    #colorize the diff in vim
-    #need to do "syntax on" in your vimrc
-    command svn diff "$@" | st -R -
-
-  #add some color to svn status output and page if needed:
-  #M = blue
-  #A = green
-  #D/!/~ = red
-  #C = magenta
-  #
-  #note that C and M can be preceded by whitespace - see $svn help status
-  elif [[ $sub_cmd =~ ^(status|st)$ ]]; then
-    svnst
-    #see below
-  #page some stuff I often end up paging manually
-  elif [[ $sub_cmd =~ ^(blame|help|h|cat)$ ]]; then
-    command svn $sub_cmd "$@" | less -F
-
-  #colorize and page svn log
-  #rearrange the date field from:
-  #  2010-10-08 21:19:24 +1300 (Fri, 08 Oct 2010)
-  #to:
-  #  2010-10-08 21:19 (Fri, +1300)
-  elif [[ $sub_cmd == log ]]; then
-    command svn log "$@" | less -RF
-
-  #let svn handle it as normal
-  else
-    command svn $sub_cmd "$@"
-  fi
-}
-
-
-
-
-
-# Pretty svn status
-svnst () {
-    declare -a modified_files;
-    declare -a untracked_files;
-    while read line; do
-        sstatus="${line:0:1}";
-        file="${line:2}";
-        while [ "${file:0:1}" = ' ' -a "${#file}" -gt 0 ]; do
-            file="${file# }";
-        done;
-        case "$sstatus" in
-            'M' | 'A' | 'D' | '!')
-                modified_files+=("$sstatus$file");
-                ;;
-            *)
-                untracked_files+=("$file");
-        esac;
-    done < <(command svn status "$@" | egrep -v '(front|back)end/files');
-    if [ ${#modified_files[@]} -gt 0 ]; then
-        echo '# Changes to be committed:';
-        echo '#   (use "svn revert <file>..." to discard changes in working directory)';
-        echo '#';
-        for file in "${modified_files[@]}"; do
-            sstatus="${file:0:1}";
-            case "$sstatus" in
-                'M') sstatus='modified';;
-                'A') sstatus='new file';;
-                'D') sstatus=' deleted';;
-                '!') sstatus=' missing';;
-            esac;
-            file="${file:1}";
-            echo $'#      '"$sstatus:    $file";
-        done | highlight --dark-green '[^#]*' --dark-red 'missing.*';
-    else
-        echo '# Nothing to commit.';
-    fi;
-    if [ ${#untracked_files[@]} -gt 0 ]; then
-        [ ${#modified_files[@]} -gt 0 ] && echo '#';
-        echo '# Untracked files:';
-        echo '#   (use "svn add <file>..." to include in what will be committed)';
-        echo '#';
-        for file in "${untracked_files[@]}"; do
-            echo $'#      '"$file";
-        done | highlight --dark-cyan '[^#]*';
-    fi;
-}
-
-
-
-
-
-# Set SVN ignore based on .svnignore file
-svnignore () {
-    command svn propset svn:ignore -F .svnignore  .
 }
 
 
@@ -303,4 +192,40 @@ function pmp-clean {
   cd build
   cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=output ..
   popd
+}
+
+function transifex {
+# bail if not master
+  BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  if [[ "$BRANCH" != "master" ]]; then
+    echo "Please checkout master";
+    return 1;
+  fi
+
+# bail if dirty
+  if [[ $(git diff --stat) != '' ]]; then
+    echo "Please stash changes"
+    return 1
+  fi
+
+# create update branch name
+  I18N_BRANCH="all/$(date +%F)-i18n-update"
+
+# update  master
+  git pull
+  git checkout -b $I18N_BRANCH
+
+# scan new strings and push
+  yarn gulp t:merge
+  tx push -s
+
+# pull new strings
+  tx pull -f
+  yarn gulp t:split
+
+# commit updated translations
+  git add .
+  git commit -am "All: Update Translations"
+
+  git push -u origin $I18N_BRANCH
 }

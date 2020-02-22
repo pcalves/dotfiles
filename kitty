@@ -7,9 +7,7 @@
 # font_family Operator Mono Book
 # bold_font Operator Mono Thick
 # bold_italic_font Operator Mono Medium
-# font_family      Input Mono
-font_family      Iosevka Nerd Font
-# font_family      Hack Nerd Font
+font_family      LigaIosevka Nerd Font Mono
 italic_font      auto
 bold_font        auto
 bold_italic_font auto
@@ -20,7 +18,6 @@ font_size        14
 adjust_column_width 0
 
 dynamic_background_opacity yes
-background_opacity 1.00
 
 # The amount the font size is changed by (in pts) when increasing/decreasing
 # the font size in a running terminal.
@@ -113,40 +110,13 @@ term xterm-kitty
 
 # The width (in pts) of window borders. Will be rounded to the nearest number of pixels based on screen resolution.
 window_border_width 0
+window_margin_width 0
 
-window_margin_width 20
 
-# Color
-# Base16 Dracula - kitty color config
-# Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula), modified by me
-# background #282a36
-# foreground #f8f8f2
-# selection_background #f8f8f2
-# selection_foreground #282a36
-# url_color #44475a
-# cursor #f8f8f2
+# include ~/.cache/wal/colors-kitty.conf
+# include ~/.config/kitty/themes/dracula.conf
+include ~/.config/kitty/themes/nord.conf
 
-# # normal
-# color0 #282a36
-# color1 #ff5555
-# color2 #50fa7b
-# color3 #f1fa8c
-# color4 #6272a4
-# color5 #ff79c6
-# color6 #8be9fd
-# color7 #f8f8f2
-
-# # bright
-# color8 #44475a
-# color9 #ff8888
-# color10 #82fba0
-# color11 #f7fcbd
-# color12 #828fb7
-# color13 #ffacdc
-# color14 #bdf3fe
-# color15 #ffffff
-
-include ~/.cache/wal/colors-kitty.conf
 
 # Shell
 shell /bin/zsh --login

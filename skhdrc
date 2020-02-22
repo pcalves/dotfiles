@@ -22,6 +22,7 @@ cmd + shift - w : /Applications/kitty.app/Contents/MacOS/kitty --single-instance
 cmd + shift - c : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/clock
 cmd + shift - r : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/reddit
 cmd + shift - p : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --session ~/.config/kitty/sessions/bitwarden
+cmd + shift - e : open /Applications/Emacs.app
 
 # pomodoro
 ctrl + alt - s : sh ~/.config/skhd/start-pomo.sh
@@ -39,8 +40,8 @@ ctrl - 5 : yabai -m space --focus 5
 ctrl - 6 : yabai -m space --focus 6
 ctrl - 7 : yabai -m space --focus 7
 
-# toggle window parent zoom
-alt - f : yabai -m window --toggle zoom-parent
+# toggle window zoom
+alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen

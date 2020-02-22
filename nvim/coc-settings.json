@@ -1,0 +1,23 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.timeout": 5000,
+  "suggest.detailField": "abbr",
+  "coc.preferences.diagnostic.enable": false,
+  "coc.preferences.snippets.enable": true,
+  "coc.source.dictionary.enable": true,
+  "coc.source.tag.enable": true,
+  "coc.source.word.enable": true,
+  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.messageTarget": "float",
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "diagnostic.errorSign": "●",
+  "diagnostic.warningSign": "●",
+  "diagnostic.infoSign": "●",
+  "tsserver.tsdk": "/Users/pcalves/.nvm/versions/node/v10.14.1/lib/node_modules/typescript/lib",
+  "tsserver.npm": "/Users/pcalves/.nvm/versions/node/v10.14.1/bin/npm",
+  "tsserver.formatOnType": false,
+  "typescript.format.enable": false
+}

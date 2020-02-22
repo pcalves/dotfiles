@@ -53,8 +53,8 @@ setw -g mode-keys vi
 # enable clipboard
 set-option -s set-clipboard on
 
-# set default terminal mode to 256 colors
-set -g default-terminal "screen-256color"
+# set default terminal mode
+set -g default-terminal $TERM
 
 # fix pbcopy/pbpaste
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
@@ -90,29 +90,34 @@ set-window-option -g monitor-activity off
 set-option -g bell-action none
 
 # statusbar
-set-option -g status-position bottom
-set-option -g status-fg white
-set-option -g status-bg default
-set-option -g status-attr default
-set-window-option -g window-status-fg "#666666"
-set-window-option -g window-status-bg black
-set-window-option -g window-status-attr default
-set-window-option -g window-status-current-fg red
-set-window-option -g window-status-current-bg black
-set-window-option -g window-status-current-attr default
-set-option -g message-fg white
-set-option -g message-bg black
-set-option -g message-attr bright
-set -g status-position bottom
+set -g status-position top               # statusbar position
+set -g status-interval 1
+set -g status-right-length 120
+set -g status-right '#(date +"%b %_d %H:%M")'
+setw -g pane-border-status top
+setw -g pane-border-format ''
+set-option -g pane-border-style fg=black
+set-option -g pane-active-border-style 'bg=#2e3440'
+set-option -ag pane-active-border-style 'bg=#2e3440'
+set-option -g pane-active-border-style fg='#2e3440'
+set -g status-style bg=black,fg=white
+set -g window-status-current-style bg='#bf616a',fg=white,bold
 set -g status-left ""
 set -g status-justify left
 setw -g window-status-current-format '#W'
 setw -g window-status-format         ' #(echo "#{window_name}") '
 setw -g window-status-current-format ' #(echo "#{window_name}") '
-set -g status-right ' #{?client_prefix,💭#[noreverse] ,}'
+
+# set-option -g message-fg white
+# set-option -g message-bg black
+# set-option -g message-attr bright
+# set -g status-position bottom
+# set -g status-left ""
+# set -g status-justify left
+# set -g status-right ' #{?client_prefix,💭#[noreverse] ,}'
 
 # messages
-set -g message-attr bold
+set -g message-style bold
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'

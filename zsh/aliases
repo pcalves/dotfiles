@@ -12,8 +12,12 @@ alias optim='image_optim -v -r .'
 alias th="toggle_hidden_files"
 alias ls="colorls"
 alias la="colorls -la"
+alias tms="tmuxinator start"
+alias tmsp="tmuxinator stop"
+alias t="task"
 alias beetit="beet im ~/Soulseek\ Downloads/complete"
 alias music='tmux new-session "tmux source-file ~/.dotfiles/scripts/ncmpcpp_tmux_session"' # Tmux session with ncmpcpp and cover art
+alias chill='mpv https://www.youtube.com/watch\?v\=hHW1oY26kxQ'
 # alias mpv='open -na /Applications/mpv.app' # See https://github.com/koekeishiya/chunkwm/issues/478
 
 
@@ -29,6 +33,3 @@ alias h="sudo nvim /private/etc/hosts && sudo nvim /private/etc/apache2/extra/ht
 # Delete already merged branches.
 # Source: http://stevenharman.net/git-clean-delete-already-merged-branches
 alias gbclean="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
-
-### Work
-alias transifex="yarn gulp t:merge && tx push -s && tx pull -f && yarn gulp t:split"

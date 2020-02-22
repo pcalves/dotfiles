@@ -1,7 +1,7 @@
 - defaults:
-        link:
-                create: true
-                relink: true
+    link:
+      create: true
+      relink: true
 
 - clean: ["~", "~/.config"]
 
@@ -11,6 +11,7 @@
     ~/.config/beets/config.yaml: beets
     ~/.config/kitty/kitty.conf: kitty
     ~/.config/kitty/sessions: kitty_sessions
+    ~/.config/kitty/themes: kitty_themes
     ~/.config/mpd/mpd.conf: mpd
     ~/.config/nvim: nvim
     ~/.config/ranger/rc.conf: ranger
@@ -30,11 +31,9 @@
     ~/.tmux.conf: tmux
     ~/.zshrc: zshrc
     ~/Brewfile: brewfile
-    ~/Library/Application Support/Übersicht/widgets/supernerd.widget: supernerd
     ~/.weechat: weechat
-    ~/Library/LaunchAgents/rice.dotfiles.dynamic-wall.plist: rice.dotfiles.dynamic-wall.plist
 
 - shell:
-        - git submodule sync --recursive
-        - launchctl load -w ~/Library/LaunchAgents/rice.dotfiles.dynamic-wall.plist
-        - brew bundle --file=~/Brewfile
+    - git submodule sync --recursive
+    - launchctl load -w ~/Library/LaunchAgents/rice.dotfiles.dynamic-wall.plist
+    - brew bundle --file=~/Brewfile

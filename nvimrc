@@ -15,12 +15,10 @@ function! DoRemote(arg)
 endfunction
 
 Plug 'mhinz/vim-startify'                                         " Start screen
-Plug 'w0rp/ale'                                                   " Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
-Plug 'chazy/dirsettings'                                          " Directory-specific settings
 Plug 'vim-scripts/Align'                                          " It's in the name: align text, declarations, pretty much anything
 Plug 'jiangmiao/auto-pairs'                                       " Auto-inserts closing characters when applicable
 Plug 'ntpeters/vim-better-whitespace'                             " Highlight trailing whitespace characters
-Plug 'mhinz/vim-signify'                                          " git diff in gutter
+Plug 'airblade/vim-gitgutter'                                     " git diff in gutter
 Plug 'tpope/vim-commentary'                                       " Comment/Uncomment code
 Plug 'tpope/vim-repeat'                                           " . for plugins
 Plug 'tpope/vim-eunuch'                                           " vim sugar for the UNIX shell commands that need it the most.
@@ -30,6 +28,7 @@ Plug 'tpope/vim-speeddating'                                      " increment da
 Plug 'tpope/vim-dispatch'                                         " async compile
 Plug 'tpope/vim-fugitive'                                         " git in vim ❤️
 Plug 'tpope/vim-rhubarb'                                          " github extension for fugitive
+Plug 'idanarye/vim-merginal'                                      " TUI for managing git branches
 Plug 'tpope/vim-unimpaired'                                       " pairs of handy bracket mappings
 Plug 'junegunn/gv.vim'                                            " git commit browser
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
@@ -42,28 +41,37 @@ Plug 'vim-scripts/IndexedSearch'                                  " shows 'Nth m
 Plug 'nelstrom/vim-visual-star-search'                            " start a * or # search from a visual block
 Plug 'thaerkh/vim-indentguides'                                   " display indention levels with thin vertical lines
 Plug 'AndrewRadev/splitjoin.vim'                                  " gS to splig, gJ to join
-Plug 'vim-airline/vim-airline'                                    " Lean & mean status/tabline
-Plug 'vim-airline/vim-airline-themes'                             " Themes for airline
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " Async completion framework
-Plug 'Shougo/neosnippet.vim'                                      " Snippet support for deoplete
-Plug 'Shougo/neosnippet-snippets'                                 " Snippets for neosnippet
 Plug 'janko-m/vim-test'                                           " Run tests from vim
 Plug 'neomake/neomake'                                            " run programs asynchronously
 Plug 'lxhillwind/leader-clipboard'                                " use <Leader> to access system clipboard in Vim
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}        " intellisense engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                   " intellisense engine
+Plug 'w0rp/ale'                                                   " Async code linting
+Plug 'liuchengxu/vista.vim'                                       " Viewer & Finder for LSP symbols and tags
+
+
+" statusline
+" https://gist.github.com/sainnhe/b8240bc047313fd6185bb8052df5a8fb
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
+Plug 'macthecadillac/lightline-gitdiff'
+Plug 'maximbaz/lightline-ale'
+Plug 'albertomontesg/lightline-asyncrun'
+Plug 'sainnhe/artify.vim'
 
 " Color Schemes
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'dylanaraps/wal.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'arcticicestudio/nord-vim'
 
 
 " Syntax highlighters, Pretty self-explanatory for the most part
 Plug 'ap/vim-css-color'             " Shows colors defined in CSS & various pre-processor languages
 Plug 'sheerun/vim-polyglot'         " Collection of language packs for vim, regularly updated
-Plug 'gavocanov/vim-js-indent'      " Indenting from pangloss/vim-javascript
-Plug 'othree/yajs.vim'              " Better syntax highlighting than ^^
-Plug 'HerringtonDarkholme/yats.vim' " TypesSript highlighting
+" Plug 'gavocanov/vim-js-indent'      " Indenting from pangloss/vim-javascript
+" Plug 'othree/yajs.vim'              " Better syntax highlighting than ^^
+" Plug 'HerringtonDarkholme/yats.vim' " TypesSript highlighting
+" Plug 'mxw/vim-jsx'                  " JSX highlighting
 
 " vim niceties for various languages
 Plug 'kewah/vim-stylefmt'
@@ -71,12 +79,13 @@ Plug 'docunext/closetag.vim'   " Autoclose HTML/XML tags
 Plug 'elzr/vim-json'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ryanoasis/vim-devicons'  " Add icons to plugins
 
 " Vimwiki
 " Plug 'patrickdavey/vimwiki-1', { 'branch': 'dev' }
 Plug 'vimwiki/vimwiki'
-Plug 'mattn/calendar-vim'
+" Plug 'mattn/calendar-vim'
 
 " Writing
 Plug 'reedes/vim-pencil'             " Several improvements for writing prose
@@ -85,22 +94,24 @@ Plug 'kana/vim-textobj-user'         " Dependency for vim-textobj-quote
 Plug 'junegunn/goyo.vim'             " Distraction-free writing
 Plug 'junegunn/limelight.vim'        " Hyperfocus-writing
 
+" Ledger
+Plug 'ledger/vim-ledger'
+Plug 'anekos/hledger-vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
 
 
 
-
 "" MAIN SETTINGS
-syntax on                           " Syntax highlighting
+syntax enable                       " Syntax highlighting
 set encoding=utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
 set number                          " show line numbers
 set visualbell                      " No sounds
 set autoread                        " Reload files changed outside vim
-set cul                             " show cursor line
 set relativenumber                  " default to relative numbers
 set inccommand=nosplit              " live preview
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Cursor is pipe in Insert, block in Normal
@@ -110,10 +121,17 @@ set shortmess+=c                    " suppress 'match x of y', 'The only match' 
 set signcolumn=yes                  " always show signcolumns
 set fcs=eob:\                       " hide tilde sign on blank lines
 set laststatus=2                    " always show status line
+set noshowmode                      " don't display the mode you're in. since it's already shown on the statusline
+set noruler                         " disable line/column number in status bar
+set updatetime=300
+
+" Some coc.nvim servers have issues with backup files
+set nobackup
+set nowritebackup
 
 " Disable underline cursor
-function s:SetCursorLine()
-    set cursorline
+function! s:SetCursorLine()
+    set nocursorline
     hi cursorline cterm=none
 endfunction
 autocmd VimEnter * call s:SetCursorLine()
@@ -133,9 +151,19 @@ set undodir=~/.vim/undodir
 
 
 "" Color scheme
-colorscheme wal
+colorscheme nord
 
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 
 
@@ -181,7 +209,8 @@ autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 " fzf.vim
 nmap <Leader>; :Buffers<CR>
 nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
+nmap <Leader>g :GF?<CR>
+nmap <Leader>v :Vista!!<CR>
 nmap <C-t> :FZF -m<CR>
 nmap <C-p> :FZF -m<CR>
 
@@ -202,30 +231,80 @@ nnoremap <silent> <leader>G :Goyo<CR>
 " Force saving files that require root permission
 cnoremap w!! w !sudo tee > /dev/null %
 
-" ripgrep
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --follow --glob "!.git/*" --glob "!.agignore" --glob "!.gitignore" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-nnoremap <silent> <leader>f :Find
-
-
+" Nuake
+nnoremap <Bslash> :Nuake<CR>
 
 
 
 "" PLUGIN SETTINGS
 
-" Use JSX syntax in JS files
-let g:jsx_ext_required = 0
+" hledger
+autocmd FileType hledger setlocal omnifunc=hledger#complete#omnifunc
+
+" Close netrw buffers; vinegar creates an issue where these buffers can't be deleted
+" https://codeyarns.com/2015/02/02/cannot-close-buffer-of-netrw-in-vim/
+autocmd FileType netrw setl bufhidden=wipe
 
 " Allow netrw to remove non-empty local directories
 let g:netrw_localrmdir='rm -r'
 
 " FZF
+" Reverse the layout to make the FZF list top-down
 let $FZF_DEFAULT_COMMAND = 'rg --hidden --ignore-file .agignore -l ""'
-" let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
-" let g:fzf_files_options = '--preview "rougify {2..} | head -'.&lines.'"'
-let g:fzf_files_options = '--preview "bat --color always --style numbers {2..} | head -'.&lines.'"'
+let $FZF_DEFAULT_OPTS='--layout=reverse --prompt "▲ "'
+let g:fzf_files_options = '--preview "bat --style numbers {2..} | head -'.&lines.'"'
+
+" Using the custom window creation function
+let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+
+" Function to create the custom floating window
+function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 10])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
+endfunction
 
 
+" ripgrep
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --follow --glob "!.git/*" --glob "!.rgignore" --glob "!.gitignore" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+nnoremap <silent> <leader>f :Find
+
+" Hide line number in fzf
+au FileType fzf set nonu nornu
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'CursorLine'],
+  \ 'bg':      ['bg', 'CursorLine'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
@@ -237,93 +316,70 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 
 
+" Ale
+" specify some specific ale linter sources, rest are using defaults
+let g:ale_sign_error = "\uf057"
+let g:ale_sign_warning = "\uf071"
 
-"Completion
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" Deoplete
-let g:deoplete#enable_at_startup = 1 " Auto start
-let g:deoplete#enable_smart_case = 1 " Smart case
-let g:deoplete#auto_complete_start_length = 2 " Stop bothering me
-let g:deoplete#enable_refresh_always = 0 " Stop the weird sorting redraw
-let g:deoplete#max_abbr_width = 0 " Allow for wide menu
+let g:ale_linters = {
+\   'javascript': ['stylelint', 'eslint', 'prettier'],
+\   'javascriptreact': ['stylelint', 'eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
+\   'typescriptreact': ['eslint', 'prettier'],
+\   'css': ['stylelint']
+\ }
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'prettier'],
+\   'javascriptreact': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
+\   'typescriptreact': ['eslint', 'prettier'],
+\   'css': ['stylelint'],
+\}
 
-set completeopt=longest,menuone
 
-"use TAB as the mapping
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ?  "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort ""
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction ""
-inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+" Javascript / React improved highlighting/indentation
+let g:javascript_plugin_jsdoc = 1
+let g:jsx_ext_required = 0
 
-" Sources:
-let g:deoplete#sources = {}
-let g:deoplete#ignore_sources = {}
-let g:deoplete#sources.markdown = ['look']
-" Ignore look in code files
-let g:deoplete#ignore_sources.java = ['look', 'm']
-let g:deoplete#ignore_sources['cs'] = ['look', 'm']
-let g:deoplete#ignore_sources['javascript'] = ['look', 'm']
-let g:deoplete#ignore_sources['rust'] = ['look', 'm']
-let g:deoplete#ignore_sources['python'] = ['look', 'm']
-let g:deoplete#ignore_sources['snippets'] = ['look', 'm']
-let g:deoplete#ignore_sources['sh'] = ['look', 'm']
-let g:deoplete#ignore_sources['go'] = ['look', 'm']
-let g:deoplete#ignore_sources['pug'] = ['look', 'm']
-let g:deoplete#ignore_sources['css'] = ['look', 'm']
-let g:deoplete#ignore_sources['html'] = ['look', 'm']
-let g:deoplete#ignore_sources['log'] = ['look', 'm']
+" Move between linting errors
+nnoremap <silent> ]r :ALENextWrap<CR>
+nnoremap <silent> [r :ALEPreviousWrap<CR>
 
-set complete-=i   " disable scanning included files
-set complete-=t   " disable searching tags
-
-" Snippets
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" Move between GitGutterHunks
+nnoremap <silent> ]h :GitGutterNextHunk<CR>
+nnoremap <silent> [h :GitGutterPrevHunk<CR>
 
 " coc.nvim
 nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>ly <Plug>(coc-type-definition)
 nmap <silent> <leader>lr <Plug>(coc-references)
 nmap <silent> <leader>li <Plug>(coc-implementation)
 
-" Ale
-let g:ale_linters = {
-\ 'javascript': ['eslint'],
-\ 'jsx': ['eslint'],
-\ 'css': ['stylelint']
-\}
+" Remap for rename current word
+nnoremap <leader>rn <Plug>(coc-rename)
 
-let g:ale_fixers = {
-\ 'javascript': ['eslint', 'prettier'],
-\ 'jsx': ['eslint', 'prettier'],
-\ 'css': ['stylelint']
-\}
+" Documentation on hover
+autocmd CursorHold * silent if ! coc#util#has_float()
+      \| call CocActionAsync('doHover')
+      \| endif
 
-let g:ale_virtualenv_dir_names = []
-let g:ale_cache_executable_check_failures = 1
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 1
+"Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:ale_open_list = 1
-let g:ale_keep_list_window_open = 0
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Enable completion where available.
-" This setting must be set before ALE is loaded.
-let g:ale_completion_enabled = 1
+
+" coc.nvim color changes
+hi! link CocErrorSign WarningMsg
+hi! link CocWarningSign Number
+hi! link CocInfoSign Type
 
 " vim-test
 let g:neomake_open_list = 1
 let g:test#strategy = 'neomake'
+let g:test#javascript#jest#options = '--reporters ~/.config/yarn/global/node_modules/jest-vim-reporter/index.js'
 let g:neomake_warning_sign = {
   \   'text': '◉'
   \ }
@@ -374,6 +430,9 @@ let g:limelight_conceal_guifg = '#777777'
 " IndentGuide
 let g:indentguides_ignorelist = ['text', 'json', 'md', 'wiki', 'vimwiki']
 
+" Vista
+let g:vista#renderer#enable_icon = 1
+
 " Show message that tests have started
 function! MyOnNeomakeJobStarted() abort
   echom printf('🔮 Running tests...')
@@ -405,14 +464,124 @@ augroup write_mode
 augroup END
 
 " Turn on Limelight when Goyo is enabled
-autocmd! User GoyoEnter  SignifyDisable | set nocursorline | Limelight
-autocmd! User GoyoLeave SignifyEnable | Limelight!
+autocmd! User GoyoEnter set nocursorline | Limelight
+autocmd! User GoyoLeave Limelight!
 
-" Allow vim to edit crontab files
-au BufNewFile,BufRead crontab.* set nobackup | set nowritebackup
+" Lightline
+" https://github.com/sainnhe/dotfiles/blob/b669e364a68acb850f03cdd71ad628b5a504b210/.config/nvim/init.vim#L762-L954
+function! TmuxBindLock() abort
+    if filereadable('/tmp/.tmux-bind.lck')
+        return "\uf13e"
+    else
+        return "\uf023"
+    endif
+endfunction
 
-" airline
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
 
-let g:airline_powerline_fonts = 1
-let g:airline_symbols_ascii=1
-let g:airline#extensions#ale#enabled=1
+function! Devicons_Filetype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : "\uf059 ") : ''
+endfunction
+
+function! Devicons_Fileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
+augroup lightlineCustom
+    autocmd!
+    autocmd WinEnter,BufEnter * call lightline_gitdiff#query_git() | call lightline#update()
+augroup END
+
+function! NearestMethodOrFunction() abort
+   return !empty(get(b:, 'vista_nearest_method_or_function', '')) ? '  '.b:vista_nearest_method_or_function : ''
+ endfunction
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+let g:lightline = {}
+let g:lightline.colorscheme = 'nord'
+let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+let g:lightline.subseparator = { 'left': "", 'right': "" }
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf057"
+let g:lightline#ale#indicator_ok = "\uf7d0"
+let g:lightline_gitdiff#indicator_added = '+'
+let g:lightline_gitdiff#indicator_deleted = '-'
+let g:lightline_gitdiff#indicator_modified = '~'
+let g:lightline.active = {
+            \ 'left':  [ [ 'gbranch', 'gitstatus' ],
+            \            [ 'readonly', 'relativepath', 'devicons_filetype', 'modified' ],
+            \            [ 'paste' ] ],
+            \ 'right': [ [ 'lineinfo' ],
+            \            [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+            \            [ 'method' ],
+            \            [ 'asyncrun_status', 'coc_status' ] ]
+            \ }
+let g:lightline.inactive = {
+            \ 'left':  [ [ 'filename' , 'devicons_filetype' ]],
+            \ 'right': [ [ 'lineinfo' ] ]
+            \ }
+let g:lightline.component = {
+            \ 'gitstatus' : '%{lightline_gitdiff#get_status()}',
+            \ 'gbranch': "\ue725 %{gitbranch#name()}",
+            \ 'bufinfo': '%{bufname("%")}:%{bufnr("%")}',
+            \ 'tmuxlock': '%{TmuxBindLock()}',
+            \ 'vim_logo': "\ue7c5",
+            \ 'mode': '%{lightline#mode()}',
+            \ 'absolutepath': '%F',
+            \ 'relativepath': '%f',
+            \ 'filename': '%t',
+            \ 'filesize': "%{HumanSize(line2byte('$') + len(getline('$')))}",
+            \ 'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
+            \ 'fileformat': '%{&fenc!=#""?&fenc:&enc}[%{&ff}]',
+            \ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
+            \ 'modified': '%M',
+            \ 'bufnum': '%n',
+            \ 'paste': '%{&paste?"PASTE":""}',
+            \ 'readonly': '%R',
+            \ 'charvalue': '%b',
+            \ 'charvaluehex': '%B',
+            \ 'percent': '%2p%%',
+            \ 'percentwin': '%P',
+            \ 'spell': '%{&spell?&spelllang:""}',
+            \ 'lineinfo': '%3l:%-2v',
+            \ 'line': '%l',
+            \ 'column': '%c',
+            \ 'close': '%999X X ',
+            \ 'winnr': '%{winnr()}'
+            \ }
+let g:lightline.component_function = {
+            \ 'gitbranch': 'gitbranch#name',
+            \ 'devicons_filetype': 'Devicons_Filetype',
+            \ 'devicons_fileformat': 'Devicons_Fileformat',
+            \ 'coc_status': 'coc#status',
+            \ 'coc_currentfunction': 'CocCurrentFunction',
+            \ 'method': 'NearestMethodOrFunction'
+            \ }
+let g:lightline.component_expand = {
+            \ 'linter_checking': 'lightline#ale#checking',
+            \ 'linter_warnings': 'lightline#ale#warnings',
+            \ 'linter_errors': 'lightline#ale#errors',
+            \ 'linter_ok': 'lightline#ale#ok',
+            \ 'asyncrun_status': 'lightline#asyncrun#status'
+            \ }
+let g:lightline.component_type = {
+            \ 'linter_checking': 'middle',
+            \ 'linter_warnings': 'warning',
+            \ 'linter_errors': 'error',
+            \ 'linter_ok': 'middle'
+            \ }
+let g:lightline.component_visible_condition = {
+            \ 'gitstatus': 'lightline_gitdiff#get_status() !=# ""'
+            \ }
+let g:lightline.component_function_visible_condition = {
+            \ 'coc_status': 'g:vimMode ==# "complete"',
+            \ 'coc_current_function': 'g:vimMode ==# "complete"'
+            \ }

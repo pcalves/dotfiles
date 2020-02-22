@@ -10,11 +10,11 @@ NINSBD=$(echo $INSERT_BORDER | sed 's/#//')
 
 # bar settings
 yabai -m config status_bar                   off
-yabai -m config status_bar_text_font         "Iosevka Nerd Font:Bold:14.0"
+yabai -m config status_bar_text_font         "Iosevka Nerd Font:Regular:14.0"
 yabai -m config status_bar_icon_font         "Iosevka Nerd Font:Regular:14.0"
 yabai -m config status_bar_background_color  $NPRESE
 yabai -m config status_bar_foreground_color  $NFOCUS
-yabai -m config status_bar_space_icon_strip  1 2 3 4 5 6 7 8 9 10
+yabai -m config status_bar_space_icon_strip  〇 一 二 三 四 五 六 七
 yabai -m config status_bar_power_icon_strip   
 yabai -m config status_bar_space_icon        
 yabai -m config status_bar_clock_icon        
@@ -31,8 +31,9 @@ yabai -m config window_border_width          1
 yabai -m config active_window_border_color   $NACTBD
 yabai -m config normal_window_border_color   $NNORBD
 yabai -m config insert_window_border_color   $NACTBD
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.95
+# yabai -m config active_window_opacity        1.0
+# yabai -m config normal_window_opacity        0.95
+# yabai -m config window_opacity_duration      0.0
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
 yabai -m config mouse_modifier               fn

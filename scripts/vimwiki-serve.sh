@@ -1,7 +1,7 @@
 #!/bin/sh
 
-NODE=`which node`
-FOREVER=`which forever`
+NODE=`command -v node`
+FOREVER=`command -v forever`
 
 cd $HOME/vimwiki
-SERVE=true ${FOREVER} start -c ${NODE} index.js
+SERVE=true $FOREVER start -c $NODE index.js

@@ -45,7 +45,7 @@ export BW_SESSION=$(cat ~/pass)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(z osx git node npm vi-mode gpg-agent)
+plugins=(z osx git node npm vi-mode gpg-agent zsh-completions emacs)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.config/zsh/functions
@@ -86,9 +86,6 @@ export HISTFILESIZE=$HISTSIZE;
 export HISTCONTROL=ignoredups;
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
 
-# thefuck (https://github.com/nvbn/thefuck) alias
-eval "$(thefuck --alias)"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # rbenv config
@@ -118,9 +115,7 @@ load-nvmrc
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/pcalves/.zshrc'
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+autoload -U compinit && compinit
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
