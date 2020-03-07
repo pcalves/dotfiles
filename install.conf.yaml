@@ -20,6 +20,7 @@
     ~/.config/vis: vis
     ~/.config/wal/templates: wal_templates
     ~/.config/zsh: zsh
+    ~/.doom.d: doom
     ~/.launcher: launcher
     ~/.ncmpcpp/bindings: ncmpcpp_bindings
     ~/.ncmpcpp/config: ncmpcpp_config

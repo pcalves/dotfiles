@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Release Note template for plex-web-client
+# uuid: plex-web-release-note
+# key: plex-web-release-note
+# --
+Type: ${0:$$(yas-choose-value '("Feature" "Fix" "Refactor"))}
+Public: ${1:$$(yas-choose-value '("Yes" "No"))}
+GHI: https://github.com/plexinc/plex-web-client/issues/$2
+Release Notes: $3
