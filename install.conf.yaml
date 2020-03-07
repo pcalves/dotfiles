@@ -6,7 +6,6 @@
 - clean: ["~", "~/.config"]
 
 - link:
-    ~/.yabairc: yabairc
     ~/.config/alacritty/alacritty.yml: alacritty
     ~/.config/beets/config.yaml: beets
     ~/.config/kitty/kitty.conf: kitty
@@ -30,9 +29,10 @@
     ~/.skhdrc: skhdrc
     ~/.tern-project: tern
     ~/.tmux.conf: tmux
+    ~/.weechat: weechat
+    ~/.yabairc: yabairc
     ~/.zshrc: zshrc
     ~/Brewfile: brewfile
-    ~/.weechat: weechat
 
 - shell:
     - git submodule sync --recursive

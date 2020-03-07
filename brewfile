@@ -27,6 +27,8 @@ brew "terminal-notifier"
 brew "emacs-mac", args: ["with-imagemagick", "with-modern-icon", "with-no-title-bars"]
 brew "ledger"
 brew "hledger"
+brew "shellcheck"
+brew "topgrade"
 brew "bitwarden-cli"
 brew "tmux"
 brew "tmuxinator"
